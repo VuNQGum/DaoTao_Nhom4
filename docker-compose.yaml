@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: vu05042001
+      POSTGRES_DB: e_learning
+    restart: always
+
+  webapp:
+    container_name: webcontainer
+    image: ilearning
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: vu05042001
+    
+    restart: always
+    

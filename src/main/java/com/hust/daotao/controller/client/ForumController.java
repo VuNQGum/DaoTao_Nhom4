@@ -1,4 +1,4 @@
-package com.hust.thesis.controller.client;
+package com.hust.daotao.controller.client;
 
 import java.util.List;
 
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hust.thesis.dto.DataCrawSoict;
-import com.hust.thesis.dto.Panigation;
-import com.hust.thesis.entity.Article;
-import com.hust.thesis.entity.Tag;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.response.ArticleResponse;
-import com.hust.thesis.service.ArticleService;
-import com.hust.thesis.service.TagService;
-import com.hust.thesis.service.UserService;
-import com.hust.thesis.util.GetDocumentFromURL;
+import com.hust.daotao.dto.DataCrawSoict;
+import com.hust.daotao.dto.Panigation;
+import com.hust.daotao.entity.Article;
+import com.hust.daotao.entity.Tag;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.response.ArticleResponse;
+import com.hust.daotao.service.ArticleService;
+import com.hust.daotao.service.TagService;
+import com.hust.daotao.service.UserService;
+import com.hust.daotao.util.GetDocumentFromURL;
 
 @Controller
 public class ForumController {

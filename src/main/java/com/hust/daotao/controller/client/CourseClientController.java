@@ -1,4 +1,4 @@
-package com.hust.thesis.controller.client;
+package com.hust.daotao.controller.client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.hust.thesis.dto.CourseDto;
-import com.hust.thesis.dto.DataCrawSoict;
-import com.hust.thesis.dto.Panigation;
-import com.hust.thesis.dto.StudentCourseDto;
-import com.hust.thesis.entity.StudentCourse;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.response.CourseResponse;
-import com.hust.thesis.service.CategoryService;
-import com.hust.thesis.service.ContextMatching;
-import com.hust.thesis.service.CourseService;
-import com.hust.thesis.service.StudentCourseService;
-import com.hust.thesis.service.UserService;
-import com.hust.thesis.util.Constants;
-import com.hust.thesis.util.GetDocumentFromURL;
+import com.hust.daotao.dto.CourseDto;
+import com.hust.daotao.dto.DataCrawSoict;
+import com.hust.daotao.dto.Panigation;
+import com.hust.daotao.dto.StudentCourseDto;
+import com.hust.daotao.entity.StudentCourse;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.response.CourseResponse;
+import com.hust.daotao.service.CategoryService;
+import com.hust.daotao.service.ContextMatching;
+import com.hust.daotao.service.CourseService;
+import com.hust.daotao.service.StudentCourseService;
+import com.hust.daotao.service.UserService;
+import com.hust.daotao.util.Constants;
+import com.hust.daotao.util.GetDocumentFromURL;
 
 @Controller
 @RequestMapping("/courses")

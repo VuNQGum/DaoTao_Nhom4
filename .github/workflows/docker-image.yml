@@ -3,8 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ "CIandCDConfig" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:

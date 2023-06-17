@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ilearning
+spec:
+  selector:
+    app: ilearning
+  type: NodePort
+  ports:
+    - port: 8888
+      targetPort: 8888
+      nodePort: 30123
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ilearning
+spec:
+  replicas: 3
+  strategy: # change types of update application: Recreate or RollingUpdate
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ilearning
+  template:
+    metadata:
+      labels:
+        app: ilearning
+    spec:
+      containers:
+        - name: webcontainer
+          # image: vunqgum/daotao:v1.0
+          image: __DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
+          ports:
+            - containerPort: 8888
+          env:
+            - name: POSTGRES_HOST
+              value: postgres
+            - name: POSTGRES_PORT
+              value: '5432'
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: vu05042001
+            - name: WEB_PORT
+              value: '8888'
+          imagePullPolicy: IfNotPresent

@@ -30,7 +30,7 @@ jobs:
       run: docker build . --file Dockerfile --tag $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
 
     - name: Docker push to docker hub
-      run: docker push $DOCKER_USER/IMAGE_NAME:$GITHUB_RUN_NUMBER
+      run: docker push $DOCKER_USER/$IMAGE_NAME:$GITHUB_RUN_NUMBER
 
     - name: Replace variables in kubernetes yaml file
       uses: cschleiden/replace-tokens@v1

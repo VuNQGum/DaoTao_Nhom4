@@ -71,7 +71,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.HOST_USERNAME }}
         key: ${{ secrets.HOST_KEY }}
-        source: kubernetes/*
+        source: "kubernetes/*"
         target: chuyende
         script: |
           ls

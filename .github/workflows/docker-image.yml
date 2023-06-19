@@ -36,6 +36,9 @@ jobs:
         username: ${{ env.DOCKER_USER }}
         password: ${{ env.DOCKER_PASSWORD }}
 
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
     - name: Build and push the Docker image
       uses: docker/build-push-action@v3
       with:

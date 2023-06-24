@@ -1,18 +1,18 @@
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   name: ingress-01
-#   annotations:
-#     nginx.ingress.kubernetes.io/rewrite-target: /
-# spec:
-#   rules:
-#   - host: daotao.space
-#     http:
-#       paths:
-#       - path: /daotao
-#         backend:
-#           serviceName: ilearning
-#           servicePort: 8888
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-01
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: daotao.space
+    http:
+      paths:
+      - path: /daotao
+        backend:
+          serviceName: ilearning
+          servicePort: 3000
 
 # ---
 apiVersion: v1

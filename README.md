@@ -41,5 +41,46 @@ Pull 1 image trên Docker Hub:
     docker pull $DOCKER_HUB_USER/$IMAGE_NAME:$TAG
 
 # II.Kubernetes
+Kubernetes hoặc k8s là một nền tảng mã nguồn mở giúp tự động hóa việc quản lý, mở rộng và triển khai ứng dụng dưới dạng container.
+
+Trong đồ án lần này, nhóm sử dụng kubernetes để triển khai Docker application và postgres database.
+Việc sử dụng kubernetes giúp tạo ra các bản sao giúp đảm bảo cân bằng tải và khả năng chịu lỗi.
+Đồng thời việc sử dụng kubernetes giúp cho CD dễ dàng và giảm downtime khi sử dụng phương pháp Rolling Update.
+
+Việc cấu hình kubernetes sẽ sử dụng 2 file trong folder kubernetes: daotao.yml và database.yml
+
+Nhóm sử dụng minikube là công cụ chạy kubernetes cluster chỉ gồm một node để thực hiện và kubectl (công cụ command-line cho kubernetes) :
+
+    minikube start # Chạy minikube
+    
+    kubectl apply -f kubernetes # apply tất cả file cấu hình kubernetes trong folder kubernetes
+
+    kubectl get all -owide # HIển thị thông tin các pod, service, deployment,...
+    
 # III. Github Actions
+Github Actions cho phép chúng ta tạo workflows vòng đời phát triển phần mềm cho dự án trực tiếp trên Github repository của chúng ta.
+
+Với Github Actions chúng ta có thể tích hợp continuous integration (CI) và continuous deployment (CD) trực tiếp trên repository của mình.
+
+Cấu hình Github Actions:
+
+    - C1: Tạo file name.yml trong folder .github/workflows
+    
+    - C2: Tạo workflow sử dụng chức năng Actions trên repository
+    
+Cấu trúc file cấu hình .yml:
+
+![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/76396786/07aaeb41-415c-46c6-aee4-51c4d753423d)
+
+Trong đó: 
+
+    - name: tên workflows.
+
+    - on: định nghĩa các sự kiện kích hoạt workflow như push, pull request, workflow_dispatch (tự kích hoạt thủ công), ...
+
+    - jobs: phân chia các công việc trong 1 workflow.
+
+    - steps: từng bước cần thực hiện trong 1 job.
+
+Workflow sẽ được thực thi khi có các sự kiện kích hoạt giúp thực hiện build chương trình, tạo docker image, push lên docker hub và sử dụng nó cho việc deploy.
 # IV. Deploy Server

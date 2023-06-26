@@ -51,7 +51,7 @@ jobs:
     - name: Replace variables in kubernetes yaml file
       uses: cschleiden/replace-tokens@v1
       with:
-        files: '["kubernetes/*.yaml"]'
+        files: '["kubernetes/*.yaml", "docker-compose.yaml"]'
         tokenPrefix: __ # optional, default is #{
         tokenSuffix: __ # optional, default is }#
       env:
@@ -82,5 +82,6 @@ jobs:
         username: ${{ secrets.HOST_USERNAME }}
         key: ${{ secrets.HOST_KEY }}
         script: |
+          cd chuyende
           docker-compose up
-          kubectl get all -owide
+          docker container ls

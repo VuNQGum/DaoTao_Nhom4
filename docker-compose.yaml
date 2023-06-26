@@ -10,7 +10,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: vu05042001
       POSTGRES_DB: e_learning
-    restart: always
 
   webapp:
     container_name: webcontainer
@@ -26,5 +25,4 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: vu05042001
     
-    restart: always
     

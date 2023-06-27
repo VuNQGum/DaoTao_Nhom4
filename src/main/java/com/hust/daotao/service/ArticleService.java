@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.ArticleDto;
-import com.hust.thesis.entity.Article;
-import com.hust.thesis.entity.Tag;
-import com.hust.thesis.repository.ArticleRepository;
-import com.hust.thesis.response.ArticleResponse;
-import com.hust.thesis.util.Constants;
+import com.hust.daotao.dto.ArticleDto;
+import com.hust.daotao.entity.Article;
+import com.hust.daotao.entity.Tag;
+import com.hust.daotao.repository.ArticleRepository;
+import com.hust.daotao.response.ArticleResponse;
+import com.hust.daotao.util.Constants;
 
 @Service
 public class ArticleService {

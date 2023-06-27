@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -15,16 +15,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.CourseDto;
-import com.hust.thesis.dto.GraphDto;
-import com.hust.thesis.dto.LessonOfCourseDto;
-import com.hust.thesis.entity.Category;
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseProfile;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.repository.CourseRepository;
-import com.hust.thesis.response.CourseResponse;
-import com.hust.thesis.util.Constants;
+import com.hust.daotao.dto.CourseDto;
+import com.hust.daotao.dto.GraphDto;
+import com.hust.daotao.dto.LessonOfCourseDto;
+import com.hust.daotao.entity.Category;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseProfile;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.repository.CourseRepository;
+import com.hust.daotao.response.CourseResponse;
+import com.hust.daotao.util.Constants;
 
 @Service
 public class CourseService {

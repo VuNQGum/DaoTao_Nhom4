@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -11,16 +11,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.CapacityTestDto;
-import com.hust.thesis.dto.ProfileDto;
-import com.hust.thesis.entity.CapacityTest;
-import com.hust.thesis.entity.Profile;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.entity.UserProfile;
-import com.hust.thesis.repository.CapacityTestRepository;
-import com.hust.thesis.response.CapacityTestResponse;
-import com.hust.thesis.util.Constants;
-import com.hust.thesis.util.UtilMethod;
+import com.hust.daotao.dto.CapacityTestDto;
+import com.hust.daotao.dto.ProfileDto;
+import com.hust.daotao.entity.CapacityTest;
+import com.hust.daotao.entity.Profile;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.entity.UserProfile;
+import com.hust.daotao.repository.CapacityTestRepository;
+import com.hust.daotao.response.CapacityTestResponse;
+import com.hust.daotao.util.Constants;
+import com.hust.daotao.util.UtilMethod;
 
 @Service
 public class CapacityTestService {

@@ -1,4 +1,4 @@
-package com.hust.thesis.controller.teacher;
+package com.hust.daotao.controller.teacher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hust.thesis.dto.LessonOfCourseDto;
-import com.hust.thesis.dto.ProfileDto;
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseProfile;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.service.CategoryService;
-import com.hust.thesis.service.CourseProfileService;
-import com.hust.thesis.service.CourseService;
-import com.hust.thesis.service.LessonOfCourseService;
-import com.hust.thesis.service.ProfileService;
-import com.hust.thesis.service.UserService;
-import com.hust.thesis.util.Constants;
+import com.hust.daotao.dto.LessonOfCourseDto;
+import com.hust.daotao.dto.ProfileDto;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseProfile;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.service.CategoryService;
+import com.hust.daotao.service.CourseProfileService;
+import com.hust.daotao.service.CourseService;
+import com.hust.daotao.service.LessonOfCourseService;
+import com.hust.daotao.service.ProfileService;
+import com.hust.daotao.service.UserService;
+import com.hust.daotao.util.Constants;
 @Controller
 @RequestMapping("/teacher/courses")
 public class CourseTeacherController {

@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.util.Date;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.ProfileDto;
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseProfile;
-import com.hust.thesis.entity.Profile;
-import com.hust.thesis.repository.CourseProfileRepository;
+import com.hust.daotao.dto.ProfileDto;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseProfile;
+import com.hust.daotao.entity.Profile;
+import com.hust.daotao.repository.CourseProfileRepository;
 
 @Service
 public class CourseProfileService {

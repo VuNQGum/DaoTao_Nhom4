@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.CourseEvaluateDto;
-import com.hust.thesis.dto.CourseResultEvaluateDto;
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseEvaluate;
-import com.hust.thesis.entity.Criteria;
-import com.hust.thesis.repository.CourseEvaluateRepository;
+import com.hust.daotao.dto.CourseEvaluateDto;
+import com.hust.daotao.dto.CourseResultEvaluateDto;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseEvaluate;
+import com.hust.daotao.entity.Criteria;
+import com.hust.daotao.repository.CourseEvaluateRepository;
 
 @Service
 public class CourseEvaluateService {

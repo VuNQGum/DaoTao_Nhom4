@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.dto.CriteriaTypeDto;
-import com.hust.thesis.entity.CriteriaType;
-import com.hust.thesis.repository.CriteriaTypeRepository;
-import com.hust.thesis.response.CriteriaTypeResponse;
-import com.hust.thesis.util.Constants;
+import com.hust.daotao.dto.CriteriaTypeDto;
+import com.hust.daotao.entity.CriteriaType;
+import com.hust.daotao.repository.CriteriaTypeRepository;
+import com.hust.daotao.response.CriteriaTypeResponse;
+import com.hust.daotao.util.Constants;
 
 @Service
 public class CriteriaTypeService {

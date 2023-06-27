@@ -1,4 +1,4 @@
-package com.hust.thesis.service;
+package com.hust.daotao.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,13 +12,13 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseProfile;
-import com.hust.thesis.entity.Criteria;
-import com.hust.thesis.entity.Profile;
-import com.hust.thesis.entity.Setting;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.entity.UserProfile;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseProfile;
+import com.hust.daotao.entity.Criteria;
+import com.hust.daotao.entity.Profile;
+import com.hust.daotao.entity.Setting;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.entity.UserProfile;
 
 @Service
 public class ContextMatching {

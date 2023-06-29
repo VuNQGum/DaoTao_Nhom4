@@ -1,3 +1,4 @@
+
 package com.hust.daotao.repository;
 
 import java.util.Date;
@@ -10,7 +11,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
 import com.hust.daotao.entity.Criteria;
+
 
 @Repository
 public interface CriteriaRepository extends JpaRepository<Criteria, Integer> {

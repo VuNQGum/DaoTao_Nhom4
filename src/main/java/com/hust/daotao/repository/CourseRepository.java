@@ -1,4 +1,6 @@
-package com.hust.thesis.repository;
+
+package com.hust.daotao.repository;
+
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +14,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hust.thesis.entity.Course;
+
+import com.hust.daotao.entity.Course;
+
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer> {

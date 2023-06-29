@@ -1,4 +1,5 @@
-package com.hust.thesis.repository;
+
+package com.hust.daotao.repository;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.hust.thesis.entity.Article;
+import com.hust.daotao.entity.Article;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Integer> {

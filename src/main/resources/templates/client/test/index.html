@@ -1,0 +1,162 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+   <head th:replace="~{client/layouts/head :: head}"></head>
+   <style>
+      .ques .question{
+      color:black;
+      font-size: 18px;
+      }
+      p {
+      color: black;
+      font-size: 16px
+      }
+      .carousel-control-next,
+      .carousel-control-prev {
+      width: 0%;
+      color: black;
+      font-size: 20px;
+      }
+      .modal-dialog {
+      pointer-events: auto;
+      }
+      .btn-custom {
+      background: #9c1010;
+      border-color: #9c1020
+      }
+      a:hover {
+      color: #9c1030;
+      }
+      .color-default,
+      a {
+      color: #9c1010
+      }
+      .scale ul {
+      padding: 0;
+      }
+      .scale ul li {
+      float: left;
+      width: 20%;
+      }
+      .button {
+      width: 100%;
+      text-align: center
+      }
+      .button .send {
+      width: 100px;
+      height: 32px;
+      background: blue;
+      border: blue;
+      border-radius: 5px;
+      color: white
+      }
+      .button .cancle {
+      width: 100px;
+      height: 32px;
+      background: red;
+      border: red;
+      border-radius: 5px;
+      color: white
+      }
+      .pre-next a:hover{
+      color: black
+      }
+      .thread-custom {
+      background: #9c1010;
+      color: white;
+      }
+      .pre-next {
+      position: unset !important;
+      }
+      b {
+      	color: black
+      }
+      .carousel-item {
+      	width: 90%;
+      	margin: 0 auto;
+      }
+      @media only screen and (max-width: 768px){
+		.courses_container {
+			padding-top: 80px;
+		}
+	}
+   </style>
+   <body id="courses">
+      <!-- Main Navbar-->
+      <header th:replace="~{client/layouts/header :: header}"> </header>
+      <div th:replace="~{client/layouts/menu :: menu}"></div>
+      <!-- Home -->
+      <div class="home">
+         <div class="breadcrumbs_container">
+            <div class="container">
+               <div class="row">
+                  <div class="col">
+                     <div class="breadcrumbs">
+                        <ul>
+                           <li><a th:href="@{/}">Trang chủ</a></li>
+                           <li>Bài kiểm tra năng lực</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Courses -->
+      <div class="courses">
+         <div class="container">
+            <div class="row">
+               <!-- Courses Main Content -->
+               <div class="col-lg-9 offset-lg-1">
+                  <div class="courses_container">
+                     <div class="row courses_row">
+                        <form id="form-test" class="col-12">
+                           <h3 class="text-center">Bài kiểm tra đánh giá năng lực</h3>
+                           <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+                              <div class="carousel-inner">
+                                 <th:block th:unless="${#lists.isEmpty(questions)}">
+                                    <div class="carousel-item" th:classappend="${iterStat.count == 1} ? active : ''" th:each="question, iterStat: ${questions}" th:id="${question.id}">
+                                       <div class="question">
+                                          <b th:text="'Câu '+${iterStat.count}+': '"> </b><span th:utext="${question.question}"></span>
+                                       </div>
+                                       <div class="answer mt-3">
+                                          <p><input type="radio" th:name="${question.id}" value="A"> <span th:utext="${question.answerA}"></span></p>
+                                       </div>
+                                       <div class="answer">
+                                          <p><input type="radio" th:name="${question.id}" value="B" > <span th:utext="${question.answerB}"></span></p>
+                                       </div>
+                                       <div class="answer">
+                                          <p><input type="radio" th:name="${question.id}" value="C" > <span th:utext="${question.answerC}"></span></p>
+                                       </div>
+                                       <div class="answer">
+                                          <p><input type="radio" th:name="${question.id}" value="D" > <span th:utext="${question.answerD}"></span></p>
+                                       </div>
+                                    </div>
+                                 </th:block>
+                              </div>
+                              <div class="pre-next">
+                                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                 <i class="fa fa-chevron-left"></i>
+                                 </a>
+                                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                 <i class="fa fa-chevron-right"></i>
+                                 </a>
+                              </div>
+                           </div>
+                           <p class="col-12 text-right">Đã trả lời: <span id="isReply">0</span>/20</p>
+                           <div class="col-lg-12 text-center">
+                              <button type="reset"  class="btn-reset trans_200">Làm lại</button>
+                              <button  class="btn-register trans_200">Nộp đáp án</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <!-- Courses Sidebar -->
+            </div>
+         </div>
+      </div>
+      <script th:src="@{/client/ajax/test.js}"></script>
+      <!-- Page Footer-->
+      <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+   </body>
+</html>

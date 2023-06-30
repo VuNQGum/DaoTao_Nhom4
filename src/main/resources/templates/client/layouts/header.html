@@ -1,0 +1,88 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">	
+<header class="header" th:fragment="header">
+	<!-- Top Bar -->
+	<div class="top_bar">
+		<div class="top_bar_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div
+							class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+							<ul class="top_bar_contact_list">
+								<li><div class="question">Bạn có thắc mắc?</div></li>
+								<li><i class="fa fa-phone" aria-hidden="true"></i>
+									<div>0912-345-678</div></li>
+								<li><i class="fa fa-envelope-o" aria-hidden="true"></i>
+									<div>nameemail@sis.hust.edu.vn</div></li>
+							</ul>
+							<div class="top_bar_login ml-auto" id="btn-signin-signup"
+								sec:authorize="!isAuthenticated()">
+								<div class="login_button float-left">
+									<a th:href="@{/login}" th:classappend="${isLogin} ? active : ''"><i class="fa fa-sign-in mr5px"></i>Đăng
+										nhập</a>
+								</div>
+								<div class="login_button float-right">
+									<a th:href="@{/register}" th:classappend="${isRegister} ? active : ''"><i class="fa fa-user-plus mr5px"></i>Đăng ký</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Header Content -->
+	<div class="header_container">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div
+						class="header_content d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo_text">
+								<a th:href="@{/}" style="color:black">Hust<span>E</span></a>
+							</div>
+						</div>
+						<nav class="main_nav_contaner ml-auto" id="menu-no-responsive">
+							<ul class="main_nav">
+								<li th:classappend="${isHome} ? active : ''"><a th:href="@{/}">Trang chủ</a></li>
+								<li th:classappend="${isCourses} ? active : ''"><a th:href="@{/courses}">Khóa học</a></li>
+								<li sec:authorize='hasAuthority("STUDENT")' th:classappend="${isSurvey} ? active : ''"><a th:href="@{/criteria}">Khảo sát</a></li>
+								<li th:classappend="${isForum} ? active : ''"><a th:href="@{/forum}" >Diễn đàn</a></li>
+								<li><a href="#footer">Liên hệ</a></li>
+							</ul>
+						</nav>
+						
+						<div class="dropdown " id="menu-responsive" style="margin-left: 15%;">
+						  <button class="btn btn-menu-reponsive dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <i class="fa fa-bars"></i>
+						  </button>
+						  <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+						   	<a th:classappend="${isHome} ? active : ''" class="dropdown-item" th:href="@{/}">Trang chủ</a>
+						    <a class="dropdown-item" th:href="@{/courses}" >Khóa học</a>
+						    <a sec:authorize='hasAuthority("STUDENT")' th:classappend="${isSurvey} ? active : ''" class="dropdown-item"  th:href="@{/criteria}">Khảo sát</a>
+						    <a th:classappend="${isForum} ? active : ''"  class="dropdown-item" th:href="@{/forum}">Diễn đàn</a>
+						    <a href="#footer" class="dropdown-item">Liên hệ</a>
+						  </div>
+						</div>
+						<div class="dropdown" sec:authorize="isAuthenticated()" style="margin-left: 15%;">
+							<div class="dropbtn"><img th:src="@{/images/hust-default.jpg}" alt="Avatar" id="avatar" class="avatar"><span id="name_loginer" class="ml-1"></span></div>
+							<div class="dropdown-content">
+								<a th:href="@{/users}"><i class="fa fa-user mr5px"></i>Thông tin cá nhân</a> 
+								<a th:href="@{/change-password}"><i class="fa fa-lock mr5px"></i>Đổi mật khẩu</a>
+								<a  th:href="@{/my-articles}" ><i class="fa fa-pencil mr5px"></i>Bài viết của tôi</a>
+								<a sec:authorize='hasAuthority("ADMIN")' th:href="@{/administrator/}" ><i class="fa fa-cog mr5px"></i>Trang quản lý</a>
+								<a sec:authorize='hasAuthority("TEACHER")' th:href="@{/teacher/courses}" ><i class="fa fa-cog mr5px"></i>Trang quản lý</a>
+								<a sec:authorize='hasAuthority("STUDENT")' th:href="@{/courses/my-courses}" ><i class="fa fa-file mr5px"></i>Khóa học của tôi</a>
+								<a th:href="@{/logout}" ><i class="fa fa-sign-out mr5px"></i>Thoát</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</header>
+</html>

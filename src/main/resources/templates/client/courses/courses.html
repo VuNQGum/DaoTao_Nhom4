@@ -1,0 +1,192 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+
+<body id="courses">
+    <!-- Main Navbar-->
+    <header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+    <!-- Home -->
+
+    <div class="home">
+        <div class="breadcrumbs_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a th:href="@{/}">Trang chủ</a></li>
+                                <li>Khóa học</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses -->
+
+    <div class="courses">
+        <div class="container">
+            <div class="row">
+
+                <!-- Courses Main Content -->
+                <div class="col-lg-8">
+                    <div class="courses_search_container">
+                        <form th:action="@{/courses}" method="get" id="courses_search_form" class="courses_search_form d-flex flex-row align-items-center justify-content-start">
+                            <div class="col-12">
+                                <th:block th:unless="${#lists.isEmpty(teachers)}">
+                                    <select class="courses_search_select courses_search_input col-5" name="teacher">
+                                        <option value="">Tất cả giảng viên</option>
+                                        <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.fullName}" th:selected="${teacher.id == teacher_id}"></option>
+                                    </select>
+                                </th:block>
+                                <input type="search" class="courses_search_input col-5" id="courses_name" placeholder="Tìm kiếm khóa học" name="course_name" th:value="${course_name}" />
+
+                                <button type="submit" class="courses_search_button ml-auto"><i class="fa fa-search"></i><span class="text-button-search">Tìm kiếm</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="courses_container">
+                        <div class="courses_show_container ml-auto clearfix mt-3">
+                            <div class="courses_show_text">
+                                Hiển thị <span class="courses_showing">trang <span th:text="${panigation.currentPage}"></span></span> trong <span class="courses_total" th:text="${panigation.	totalPage}"></span> trang.
+                            </div>
+                        </div>
+                        <div class="row courses_row">
+
+                            <!-- Course -->
+                            <th:block th:if="${#lists.isEmpty(response.aaData)}">
+                                <p class="text-center col-12 empty-course">Không có khóa học nào
+                                </p>
+                            </th:block>
+                            <th:block th:unless="${#lists.isEmpty(response.aaData)}">
+                                <div class="col-lg-6 course_col" th:each="course : ${response.aaData}">
+                                    <div class="course">
+                                        <div class="course_image">
+                                            <img th:src="@{${course.image}}" alt="">
+                                        </div>
+                                        <div class="course_body">
+                                            <h3 class="course_title">
+												<a th:href="@{'courses/'+${course.code}}" th:text="'Khóa học: '+${course.name}">
+												</a>
+											</h3>
+                                            <div class="course_text">Bộ môn: <span th:text="${course.categoryDto.name}"></span></div>
+                                            <div class="course_text" th:text="'Giảng viên: '+${course.teacher.fullName}"></div>
+                                        </div>
+                                        <div class="course_footer">
+                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                                <div class="course_info">
+                                                    <i class="fa fa-users" aria-hidden="true"></i> <span th:text="${course.quantityStudent} + ' sinh viên'"></span>
+                                                </div>
+                                                <div class="course_info">
+                                                    <i class="fa fa-file" aria-hidden="true"></i> <span th:text="${course.quantityLesson} + ' bài giảng'"></span>
+                                                </div>
+                                                <div class="course_price ml-auto ">
+                                                    <a th:href="@{'courses/'+${course.code}}" class="btn-detail">Chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                        <div class="row pagination_row">
+                            <div class="col">
+                                <div class="pagination_container d-flex flex-row align-items-center justify-content-start col-lg-4 offset-lg-4">
+                                    <th:block th:unless="${response.iTotalPage <= 1}">
+                                        <ul class="pagination_list">
+                                            <li th:if="${panigation.isBackSection}"><a th:href="@{/courses?__'page='+((${panigation.currentSection}-1)*3)____(${course_name} != '')? ('&course_name='+${course_name}) : ''____(${category_id} > 0)? ('&category='+${category_id}) : ''____(${teacher_id} > 0)? ('&teacher='+${teacher_id}) : ''__}"><i
+													class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                                            <li th:classappend="${index == panigation.currentPage} ? active : ''" th:each="index : ${#numbers.sequence(panigation.pageStart,(panigation.pageEnd))}">
+                                                <a th:href="@{/courses?__'page='+${index}____(${course_name} != '')? ('&course_name='+${course_name}) : ''____(${category_id} > 0)? ('&category='+${category_id}) : ''____(${teacher_id} > 0)? ('&teacher='+${teacher_id}) : ''__}" th:text="${index}"></a>
+                                            </li>
+                                            <li th:if="${panigation.isNextSection}"><a th:href="@{/courses?__'page='+((${panigation.currentSection}+1)*3-2)____(${course_name} != '')? ('&course_name='+${course_name}) : ''____(${category_id} > 0)? ('&category='+${category_id}) : ''____(${teacher_id} > 0)? ('&teacher='+${teacher_id}) : ''__}"><i
+													class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </th:block>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <!-- Categories -->
+                        <th:block th:unless="${#lists.isEmpty(categories)}">
+                            <div class="sidebar_section">
+                                <div class="sidebar_section_title"><a th:href="@{/courses}">Bộ môn</a></div>
+                                <div class="sidebar_categories">
+                                    <ul>
+                                        <li th:each="category : ${categories}" th:classappend="${category.id==category_id} ? active : ''">
+                                            <a th:href="@{courses(category=${category.id})}" th:text="${category.name}"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </th:block>
+                        <!-- khóa học phù hợp -->
+                        <th:block th:unless="${#lists.isEmpty(yourCourses)}">
+	                        <div class="sidebar_section">
+	                            <div class="sidebar_section_title">Khóa học phù hợp với bạn</div>
+	                            <div class="sidebar_latest">
+								
+		                                <!-- Latest Course -->
+		                                <div class="latest d-flex flex-row align-items-start justify-content-start" th:each="course : ${yourCourses}">
+		                                    <div class="latest_image">
+		                                        <div>
+		                                            <img th:src="@{${course.image}}" alt="" style="height: 60px;width: 100%;">
+		                                        </div>
+		                                    </div>
+		                                    <div class="latest_content">
+		                                        <div class="latest_title">
+		                                            <a th:href="@{'/courses/'+${course.code}}" th:text="${course.name}" style="font-size: 12px"></a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+	                     
+	                            </div>
+	                        </div>
+                      	</th:block>
+                      	<!--tin tức -->
+                        <th:block th:unless="${#lists.isEmpty(newsHome)}">
+	                        <div class="sidebar_section">
+	                            <div class="sidebar_section_title">Tin tức</div>
+	                            <div class="sidebar_latest">
+								
+		                                <!-- Latest Course -->
+		                                <div class="latest d-flex flex-row align-items-start justify-content-start" th:each="news : ${newsHome}">
+		                                    <div class="latest_image">
+		                                        <div>
+		                                            <img th:src="@{${news.image}}" alt="" style="height: 60px;width: 100%;">
+		                                        </div>
+		                                    </div>
+		                                    <div class="latest_content">
+		                                        <div class="latest_title">
+		                                            <a th:href="@{${news.href}}" target="_blank" th:text="${news.title}" style="font-size: 12px"></a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+	                     
+	                            </div>
+	                        </div>
+                      	</th:block>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{./client/ajax/course.js}"></script>
+    <!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

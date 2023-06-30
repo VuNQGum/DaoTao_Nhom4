@@ -1,0 +1,239 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+<style>
+	.tab_panel_2  a{
+		color:#9c1010;
+	}
+	.learning {
+		background-color: rgba(0, 0, 255, 0.25);
+		padding:0 5px;
+	}
+</style>
+
+<body id="course">
+	<!-- Main Navbar-->
+	<header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+	<!-- Home -->
+
+	
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a th:href="@{/}">Trang chủ</a></li>
+								<li><a th:href="@{/courses}">Khóa học</a></li>
+								<li><a th:href="@{/courses/my-courses}">Khóa học của tôi</a></li>
+								<li>Vào học</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
+
+	<!-- Course -->
+	<input type="hidden" id="course_id" th:value="${course.id}"/>
+	<div class="course">
+		<div class="container">
+			<div class="row">
+
+				<!-- Course -->
+				<div class="col-lg-8">
+					
+					<div class="course_container">
+						<div class="course_title" th:text="${course.name}"></div>
+						<!-- Course Image -->
+						<div class="course_image" id="course_image"><img th:src="@{${course.image}}" alt="" style="width:100%"></div>
+						<div id="course_content" style="display:none">
+							 <iframe class="embed-responsive-item" id="view_content" src="" style="width:100%;height:500px">
+					                        </iframe>
+						</div>
+						<!-- Course Tabs -->
+						<div class="course_tabs_container">
+							<div class="tabs d-flex flex-row align-items-center justify-content-start">
+								<div class="tab active">Bài giảng</div>
+<!-- 								<div class="tab">Đánh giá</div>-->							
+							</div>
+							<div class="tab_panels">
+
+								<!-- Curriculum -->
+								<div class="tab_panel tab_panel_2 active" id="lessons">
+									<div class="tab_panel_content">
+										<div class="tab_panel_content">
+											<!-- Dropdowns -->
+											<ul class="dropdowns">
+												<th:block th:unless="${#lists.isEmpty(course.lessonOfCourseDtos)}">
+													<li th:each="lesson, iterStat : ${course.lessonOfCourseDtos}">
+														<div class="dropdown_item">
+															<div class="dropdown_item_title"><a href="javascript:;" class="learn-lesson" th:id="${lesson.url}"><span th:text="'Bài '+${iterStat.count}"></span> <span  th:text="${lesson.name}"></span></a></div>
+															<div class="dropdown_item_text">
+																<p th:utext="${lesson.description}"></p>
+															</div>
+														</div>
+													</li>
+												</th:block>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<!-- Reviews -->
+								<!-- <div class="tab_panel tab_panel_3">
+									<div class="tab_panel_title">Course Review</div>
+
+									Rating
+									<div class="review_rating_container">
+										<div class="review_rating">
+											<div class="review_rating_num">4.5</div>
+											<div class="review_rating_stars">
+												<div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div>
+											</div>
+											<div class="review_rating_text">(28 Ratings)</div>
+										</div>
+										<div class="review_rating_bars">
+											<ul>
+												<li><span>5 Star</span><div class="review_rating_bar"><div style="width:90%;"></div></div></li>
+												<li><span>4 Star</span><div class="review_rating_bar"><div style="width:75%;"></div></div></li>
+												<li><span>3 Star</span><div class="review_rating_bar"><div style="width:32%;"></div></div></li>
+												<li><span>2 Star</span><div class="review_rating_bar"><div style="width:10%;"></div></div></li>
+												<li><span>1 Star</span><div class="review_rating_bar"><div style="width:3%;"></div></div></li>
+											</ul>
+										</div>
+									</div>
+									
+									Comments
+									<div class="comments_container">
+										<ul class="comments_list">
+											<li>
+												<div class="comment_item d-flex flex-row align-items-start jutify-content-start">
+													<div class="comment_image"><div><img th:src="@{/client/images/comment_1.jpg}" alt=""></div></div>
+													<div class="comment_content">
+														<div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
+															<div class="comment_author"><a href="#">Milley Cyrus</a></div>
+															<div class="comment_rating"><div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div></div>
+															<div class="comment_time ml-auto">1 day ago</div>
+														</div>
+														<div class="comment_text">
+															<p>There are many variations of passages of Lorem Ipsum available, but the majority have alteration in some form, by injected humour.</p>
+														</div>
+														<div class="comment_extras d-flex flex-row align-items-center justify-content-start">
+															<div class="comment_extra comment_likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
+															<div class="comment_extra comment_reply"><a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a></div>
+														</div>
+													</div>
+												</div>
+												<ul>
+													<li>
+														<div class="comment_item d-flex flex-row align-items-start jutify-content-start">
+															<div class="comment_image"><div><img th:src="@{/client/images/comment_2.jpg}" alt=""></div></div>
+															<div class="comment_content">
+																<div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
+																	<div class="comment_author"><a href="#">John Tyler</a></div>
+																	<div class="comment_rating"><div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div></div>
+																	<div class="comment_time ml-auto">1 day ago</div>
+																</div>
+																<div class="comment_text">
+																	<p>There are many variations of passages of Lorem Ipsum available, but the majority have alteration in some form, by injected humour.</p>
+																</div>
+																<div class="comment_extras d-flex flex-row align-items-center justify-content-start">
+																	<div class="comment_extra comment_likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
+																	<div class="comment_extra comment_reply"><a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a></div>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<div class="comment_item d-flex flex-row align-items-start jutify-content-start">
+													<div class="comment_image"><div><img th:src="@{/client/images/comment_3.jpg}" alt=""></div></div>
+													<div class="comment_content">
+														<div class="comment_title_container d-flex flex-row align-items-center justify-content-start">
+															<div class="comment_author"><a href="#">Milley Cyrus</a></div>
+															<div class="comment_rating"><div class="rating_r rating_r_4"><i></i><i></i><i></i><i></i><i></i></div></div>
+															<div class="comment_time ml-auto">1 day ago</div>
+														</div>
+														<div class="comment_text">
+															<p>There are many variations of passages of Lorem Ipsum available, but the majority have alteration in some form, by injected humour.</p>
+														</div>
+														<div class="comment_extras d-flex flex-row align-items-center justify-content-start">
+															<div class="comment_extra comment_likes"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i><span>15</span></a></div>
+															<div class="comment_extra comment_reply"><a href="#"><i class="fa fa-reply" aria-hidden="true"></i><span>Reply</span></a></div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<div class="add_comment_container">
+											<div class="add_comment_title">Add a review</div>
+											<div class="add_comment_text">You must be <a href="#">logged</a> in to post a comment.</div>
+										</div>
+									</div>
+								</div> -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Course Sidebar -->
+				<div class="col-lg-4">
+					<div class="sidebar">
+
+						<!-- feature_course -->
+						<div class="sidebar_section">
+							<div class="sidebar_section_title">Thông tin khóa học</div>
+							<div class="sidebar_feature_course">
+								<!-- feature_courses -->
+								<div class="feature_course_list">
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-book" aria-hidden="true"></i><span>Bộ môn:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.categoryDto.name}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-user" aria-hidden="true"></i><span>Giảng viên:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.teacher.fullName}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Tổng số bài học:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.quantityLesson}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-users" aria-hidden="true"></i><span>Số sinh viên:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.quantityStudent}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span>Trạng thái:</span></div>
+										<div class="feature_course_text ml-auto">Đã đăng ký</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<script th:src="@{/client/ajax/course.js}"></script>
+	<!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+   <head th:replace="~{client/layouts/head :: head}"></head>
+   <style>
+      .post {
+      color: black;
+      }
+      .post a {
+      color: #9c1010;
+      }
+      .post a:hover {
+      color: #9c101F;
+      }
+      .post .tags a {
+      color: white;
+      }
+      .post .tags a:hover {
+      background: #9c1010;
+      color: white
+      }
+      .menus {
+      font-size: 18px;
+      color: black
+      }
+      .menus .active {
+      color: #9c1010;
+      }
+      .menus a {
+      cursor: pointer;
+      color: black
+      }
+      .ml-80 {
+      margin-left: 80px
+      }
+      .btn-post a {
+      color: white;
+      cursor: pointer;
+      }
+ 	table.dataTable thead .sorting_asc {
+    	background-image: none;
+	}
+   </style>
+   <body id="courses">
+      <!-- Main Navbar-->
+      <header th:replace="~{client/layouts/header :: header}"> </header>
+      <div th:replace="~{client/layouts/menu :: menu}"></div>
+      <!-- Home -->
+      <div class="home">
+         <div class="breadcrumbs_container">
+            <div class="container">
+               <div class="row">
+                  <div class="col">
+                     <div class="breadcrumbs">
+                        <ul>
+                           <li><a th:href="@{/}">Trang chủ</a></li>
+                           <li>Bài viết của bạn</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Courses -->
+      <div class="courses">
+         <div class="container">
+            <div class="row">
+               <!-- Courses Main Content -->
+               <div class="col-lg-12">
+               	  <input type="hidden" id="user_id" th:value="${userId}">
+                  <div class="blog_content">
+                     <table class="table table-hover table-bordered"
+                        id="tbl-my-articles">
+                        <thead>
+                           <tr>
+                              <th class="text-center " style="width:25%">Tiêu đề</th>
+                              <th class="text-center " >Mô tả	</th>
+                              <th class="text-center  ">Thời gian đăng bài</th>
+                              <th class="text-center ">Hành động</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <!-- Courses Sidebar -->
+            </div>
+         </div>
+      </div>
+      <script th:src="@{/client/ajax/article.js}"></script>
+      <!-- Page Footer-->
+      <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+   </body>
+</html>

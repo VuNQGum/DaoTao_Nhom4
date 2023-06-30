@@ -1,0 +1,10 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<div id="wait" class="wait" th:fragment="loading">
+		<img th:src='@{/images/demo_wait.gif}' width="80" height="64" />
+		<div class="modal-backdrop fade show"></div>
+	</div>
+	<div class="load" th:fragment="preloading">
+		<img th:src="@{/images/preloading.gif}">
+	</div>
+</html>

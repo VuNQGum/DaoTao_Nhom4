@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+</head>
+<body>
+	<div class="container">
+		<p th:text="'Xin chào ' + ${name} + ','"></p>
+		<p>
+			Bạn đã được thêm vào khóa học: <b th:text="${course.name}"></b><br>
+			Bộ môn:<span th:text="${course.categoryOfCourse.name}"></span>.<br>
+			Giảng viên: <span th:text="${course.teacher.fullName}"></span><br>
+		</p>
+		<p>Đăng ký của bạn đã được chấp nhận. <br>
+		   Truy cập <a th:href="@{'http://124.158.1.126:9809/courses/my-courses/'+${course.code}+'/learn'}"><span th:text="${course.name}"></span></a> để vào học.</p>
+		<th:block th:unless="${#lists.isEmpty(courseRecommend)}">
+			<p>Một số khóa học khác có thể phù hợp với bạn:</p>
+			<div class="card col-lg-4" style="width: 20%;border: solid 1px;padding: 1em; float:left; margin-right:15px" th:each="c : ${courseRecommend}">
+			  <img class="card-img-top" th:src="@{https://storage.googleapis.com/hust-files/images/hust-banner-01_1.2m.png}" alt="Card image cap" style="width:100%;height: 100px">
+			  <div class="card-body">
+			    <h3 class="card-title" th:text="${c.name}"></h3>
+			    <p class="card-text" th:text="'Bộ môn: '+${c.categoryOfCourse.name}"></p>
+			    <p class="card-text" th:text="'Giảng viên: '+${c.teacher.fullName}"></p>
+			    <div style="text-align: center">
+					<a th:href="@{'http://124.158.1.126:9809/courses/'+${c.code}}" style="border: solid 1px;padding: 0.5em;text-decoration: none;color: white;background: #9c1010;">Xem chi tiết</a>
+			    </div>
+			  </div>
+			</div>
+		</th:block>
+		<p style="clear:both; padding-top:20px">Xin cảm ơn,<br>
+			<b>Admin HustE.</b>
+		</p>
+	</div>
+
+</body>
+</html>

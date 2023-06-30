@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+</head>
+<body>
+	<div class="container">
+		<p th:text="'Xin chào giảng viên ' + ${teacher.fullName} + ','"></p>
+		<p>
+			Sinh viên: <b th:text="${student.fullName}"></b><br>
+			Email: <span th:text="${student.email}"></span>.<br>
+		</p>
+		<p>đã gửi đăng ký tham gia khóa học <span th:text="${course.name}"></span>. <br>
+		   Truy cập <a th:href="@{https://www.facebook.com/trungnn1606}"><span th:text="${course.name}"></span></a> để xác nhận cho sinh viên này vào học.</p>
+				<p style="clear:both; padding-top:20px">Xin cảm ơn,<br>
+			<b>HustE.</b>
+		</p>
+	</div>
+</body>
+</html>

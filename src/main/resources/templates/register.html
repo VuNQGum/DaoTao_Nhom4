@@ -1,0 +1,176 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+<style>
+	.select2-container--default .select2-selection--single {
+	    height: 46px;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+    	line-height: 45px;
+	}
+	.select2-container--default .select2-selection--multiple {
+   		min-height: 46px;
+	}
+	.select2-container--default .select2-search--inline .select2-search__field {
+		line-height: 33px;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 40px;
+	} 
+	.badge {
+		line-height: 0 !important
+	}
+    div {
+        position: unset;
+    }
+    
+    .newsletter_background {
+        position: unset;
+    }
+    
+    .form-check-label {
+        color: black;
+        padding-left: 0
+    }
+    
+    .text-red {
+        color: red;
+    }
+    
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+    
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+    
+    .upload-btn-wrapper img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .label-image {
+        margin-bottom: 100px;
+        vertical-align: middle;
+    }
+    
+    #image {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+    }
+    
+    .btn-upload {
+        width: 120px;
+        margin-top: 40px;
+        margin-right: 30px;
+    }
+</style>
+
+<body>
+    <!-- Main Navbar-->
+    <header th:replace="~{client/layouts/header :: header}"> </header>
+    <div th:replace="~{client/layouts/menu :: menu}"></div>
+    <!-- register -->
+
+    <div class="register ">
+
+        <!-- register Info -->
+
+        <div class="register_info_container">
+            <div class="container">
+                <div class="row">
+
+                    <!-- register Form -->
+                    <div class="col-12">
+                        <div class="register_form ">
+                            <div class="register_info_title text-center">Đăng ký thành viên
+                            </div>
+                            <form class="comment_form col-12" id="form-register" accept-charset="UTF-8">
+                                <div class="md-form col-lg-4 offset-lg-4 mb-4">
+                                    <label for="image" class="btn btn-info btn-upload float-left">Chọn ảnh</label>
+                                    <input type="file" name="avatar" id="image" />
+                                    <div class="upload-btn-wrapper">
+                                        <img th:src="@{/images/upload-pic.png}" class="" id="image-preview">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-6 float-left">
+                                    <div class="form_title">Họ và tên <span class="text-red">*</span></div>
+                                    <input type="text" class="comment_input" id="input-name" name="name" placeholder="Nhập tên của bạn">
+                                </div>
+                                <div class="col-lg-6 float-left">
+                                    <div class="form_title">Email <span class="text-red">*</span></div>
+                                    <input type="text" class="comment_input" id="input-email" name="email" placeholder="Nhập email của bạn">
+                                </div>
+                                <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Mã số sinh viên <span class="text-red">*</span></div>
+                                    <input type="text" class="comment_input" id="input-student-code" name="student_code" placeholder="Nhập mã số sinh viên của bạn">
+                                </div>
+                                <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Bộ môn <span class="text-red">*</span></div>
+                                    <select   class="comment_input select" id="subject_id" name="subject_id">
+                                    	 <option value="0">Lựa chọn bộ môn</option>
+                                         <option  th:each="subject : ${subjects}" th:value="${subject.id}" th:text="${subject.name}"></option>
+                                     </select>
+                                </div>
+                                <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Mật khẩu <span class="text-red">*</span></div>
+                                    <input type="password" class="comment_input" id="password" name="password" placeholder="Nhập mật khẩu">
+                                </div>
+                                <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Nhập lại mật khẩu <span class="text-red">*</span></div>
+                                    <input type="password" class="comment_input" id="repassword" name="repassword" placeholder="Nhập lại mật khẩu">
+                                </div>
+                                
+                                 <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Số điện thoại </div>
+                                    <input type="text" class="comment_input" id="input-phone" name="phone" placeholder="Nhập số điện thoại">
+                                </div>
+                                <div class="col-lg-6 float-left mt-2">
+                                    <div class="form_title">Ngày sinh</div>
+                                    <input type="date" class="comment_input" id="input-birthday" name="birthday">
+                                </div>
+                                <div class="profile" id="profile">
+                                    <th:block th:unless="${#lists.isEmpty(profileDtos)}">
+                                        <div class="col-lg-6 float-left mt-2" th:each="profile : ${profileDtos}">
+                                            <div class="form_title"><span th:text="${profile.nameDisplayStudentSide}"></span> <span class="text-red">*</span></div>
+                                            <select  multiple th:if="${profile.isMultiple}" class="comment_input select" th:id="${profile.code}" th:name="${profile.code}">
+                                                <option  th:each="value : ${profile.profileValueDtos}" th:value="${value.value}" th:text="${value.nameDisplayStudentSide}"></option>
+                                            </select>
+                                             <select  th:if="${!profile.isMultiple}" class="comment_input select" th:id="${profile.code}" th:name="${profile.code}">
+                                                <option value="">Lựa chọn giá trị</option>
+                                                <option  th:each="value : ${profile.profileValueDtos}" th:value="${value.value}" th:text="${value.nameDisplayStudentSide}"></option>
+                                            </select>
+                                        </div>
+                                    </th:block>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-xs-12 flont-none text-center">
+                                    <button type="reset" class="btn-reset trans_200">Tạo lại
+                                    </button>
+                                    <button id="btn-register" class="btn-register trans_200">Đăng ký
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{client/layouts/loading :: loading}"> </div>
+    <!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

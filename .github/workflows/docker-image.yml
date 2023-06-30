@@ -10,11 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      #Docker config
       DOCKER_USER: ${{secrets.DOCKER_USER}} # name of Docker Hub ID
       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       IMAGE_NAME: daotao
       IMAGE_TAG: ${{ github.run_number }} # $GITHUB_RUN_NUMBER
-      
+
       CLUSTER_NAME: aks-cluster
       RESOURSE_GROUP: rg-aks-cluster
 
@@ -56,6 +57,10 @@ jobs:
       DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       IMAGE_NAME: daotao
       IMAGE_TAG: ${{ github.run_number }} # $GITHUB_RUN_NUMBER
+      #Amazon s3 config
+      AMAZON_S3_BUCKET: ${{secrets.AMAZON_S3_BUCKET}}
+      AMAZON_S3_ACCESSKEY: ${{secrets.AMAZON_S3_ACCESSKEY}}
+      AMAZON_S3_PRIVATEKEY: ${{secrets.AMAZON_S3_PRIVATEKEY}}
       
       CLUSTER_NAME: aks-cluster
       RESOURSE_GROUP: rg-aks-cluster
@@ -72,6 +77,9 @@ jobs:
         DOCKER_REPOSITORY: ${{ env.DOCKER_USER }}
         IMAGE_NAME: ${{ env.IMAGE_NAME }}
         IMAGE_TAG: ${{ env.IMAGE_TAG }}
+        AMAZON_S3_BUCKET: ${{env.AMAZON_S3_BUCKET}}
+        AMAZON_S3_ACCESSKEY: ${{env.AMAZON_S3_ACCESSKEY}}
+        AMAZON_S3_PRIVATEKEY: ${{env.AMAZON_S3_PRIVATEKEY}}
 
     - name: Copy config file to server
       uses: appleboy/scp-action@v0.1.4

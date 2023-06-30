@@ -1,0 +1,183 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+<style>
+	.btn-learn a:hover{
+		text-decoration: none;
+		color: white;
+	}
+	.tab_panel_description ul li {
+		list-style: circle;
+	}
+	
+</style>
+<body id="course">
+	<!-- Main Navbar-->
+	 <header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+	<!-- Home -->
+
+	
+	<div class="home">
+		<div class="breadcrumbs_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="breadcrumbs">
+							<ul>
+								<li><a th:href="@{/}">Trang chủ</a></li>
+								<li><a th:href="@{/courses}">Khóa học</a></li>
+								<li>Chi tiết</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>			
+	</div>
+
+	<!-- Course -->
+	<input type="hidden" id="course_id" th:value="${course.id}"/>
+	<div class="course">
+		<div class="container">
+			<div class="row">
+
+				<!-- Course -->
+				<div class="col-lg-8">
+					
+					<div class="course_container">
+						<div class="course_title" th:text="${course.name}"></div>
+						<!-- Course Image -->
+						<div class="course_image"><img th:src="@{${course.image}}" alt="" style="width:100%"></div>
+
+						<!-- Course Tabs -->
+						<div class="course_tabs_container">
+							<div class="tabs d-flex flex-row align-items-center justify-content-start">
+								<div class="tab active">Mô tả khóa học</div>
+								<div class="tab">Đề cương khóa học</div>
+<!-- 								<div class="tab">Đánh giá khóa học</div>-->							
+							</div>
+							<div class="tab_panels">
+
+								<!-- Description -->
+								<div class="tab_panel active tab_panel_description">
+									<div class="tab_panel_title" th:text="${course.name} +' - ' + ${course.code}"></div>
+									<div class="tab_panel_content" th:utext="${course.description}">
+									</div>
+								</div>
+
+								<!-- Curriculum -->
+								<div class="tab_panel tab_panel_2">
+									<div class="tab_panel_content">
+										<div class="tab_panel_content">
+											<!-- Dropdowns -->
+											<ul class="dropdowns">
+												<th:block th:unless="${#lists.isEmpty(course.lessonOfCourseDtos)}">
+													<li th:each="lesson, iterStat : ${course.lessonOfCourseDtos}">
+														<div class="dropdown_item">
+															<div class="dropdown_item_title"><span th:text="'Bài '+${iterStat.count}+': '"></span> <span  th:text="${lesson.name}"></span></div>
+															<div class="dropdown_item_text">
+																<p th:utext="${lesson.description}"></p>
+															</div>
+														</div>
+													</li>
+												</th:block>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="comment-like-share mt-4">
+						<div id="fb-root"></div>
+						<script  src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=679136475896132&autoLogAppEvents=1"></script>
+						<div class="fb-like" th:data-href="${urlWeb}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+						<div class="fb-comments" th:data-href="${urlWeb}" data-numposts="5" data-width="100%"></div>
+					</div>
+				</div>
+
+				<!-- Course Sidebar -->
+				<div class="col-lg-4">
+					<div class="sidebar">
+
+						<!-- feature_course -->
+						<div class="sidebar_section">
+							<div class="sidebar_section_title">Thông tin khóa học</div>
+							<div class="sidebar_feature_course">
+								<!-- feature_courses -->
+								<div class="feature_course_list">
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-book" aria-hidden="true"></i><span>Bộ môn:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.categoryDto.name}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-user" aria-hidden="true"></i><span>Giảng viên:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.teacher.fullName}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Tổng số bài học:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.quantityLesson}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-users" aria-hidden="true"></i><span>Số sinh viên:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course.quantityStudent}"></div>
+									</div>
+									<!-- feature_course -->
+									<div class="feature_course d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_course_title"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span>Trạng thái:</span></div>
+										<div class="feature_course_text ml-auto" th:text="${course_register_status}">Chưa đăng ký</div>
+									</div>
+									<input type="hidden" th:value="${course.link}" id="link" name="link">
+									<div class="col-12 text-center btn-learn">
+										<button class="course_regist" id="btn_course_regist" th:if="${status_regist_btn == null}">Đăng ký ngay</button>
+										<a th:if="${course.link == '' && status_regist_btn != null}" th:href="@{'/courses/my-courses/'+${course.code}+'/learn'}"class="course_regist" id="btn_course_learn">Vào học ngay</a>
+										<a th:unless="${course.link == ''}" th:href="@{${course.link}}"class="course_regist" id="btn_course_learn" th:if="${status_regist_btn}">Vào học ngay</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Latest Course -->
+						<th:block th:unless="${#lists.isEmpty(yourCourses)}">
+	                        <div class="sidebar_section">
+	                            <div class="sidebar_section_title">Khóa học phù hợp với bạn</div>
+	                            <div class="sidebar_latest">
+								
+		                                <!-- Latest Course -->
+		                                <div class="latest d-flex flex-row align-items-start justify-content-start" th:each="course : ${yourCourses}">
+		                                    <div class="latest_image">
+		                                        <div>
+		                                            <img th:src="@{${course.image}}" alt="" style="height: 60px;width: 100%;">
+		                                        </div>
+		                                    </div>
+		                                    <div class="latest_content">
+		                                        <div class="latest_title">
+		                                            <a th:href="@{'/courses/'+${course.code}}" th:text="${course.name}" style="font-size: 12px"></a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+	                     
+	                            </div>
+	                        </div>
+                      	</th:block>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="~{client/layouts/loading :: loading}"> </div>
+	<script th:src="@{/client/ajax/course.js}"></script>
+	<!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+<style>
+    .post {
+        color: black;
+    }
+    
+    .post a {
+        color: #9c1010;
+    }
+    
+    .post a:hover {
+        color: #9c101F;
+    }
+    
+    .post .tags a {
+        color: white;
+    }
+    
+    .post .tags a:hover {
+        background: #9c1010;
+        color: white
+    }
+    
+    .menus {
+        font-size: 18px;
+        color: black
+    }
+    
+    .menus .active {
+        color: #9c1010;
+    }
+    
+    .menus a {
+        cursor: pointer;
+        color: black
+    }
+    
+    .ml-80 {
+        margin-left: 80px
+    }
+    
+    .btn-post a {
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+<body id="courses">
+    <!-- Main Navbar-->
+     <header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+    <!-- Home -->
+
+    <div class="home">
+        <div class="breadcrumbs_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a th:href="@{/}">Trang chủ</a></li>
+                                <li>Diễn đàn</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses -->
+
+    <div class="courses">
+        <div class="container">
+            <div class="row">
+
+                <!-- Courses Main Content -->
+                <div class="col-lg-12">
+                    <div class="blog_content">
+						<div class="blog_title" th:text="${article.title}"></div>
+						<div class="blog_meta">
+							<ul>
+								<li><i class="fa fa-calendar"></i> <span th:text="${#dates.format(article.updatedAt, 'dd-MM-yyyy')}"></span></li>
+								<li><i class="fa fa-user"></i>  <span th:text="${article.userPostArticle.fullName}"></span></li>
+							</ul>
+						</div>
+						<p th:text="${article.description}"></p>
+						<div class="tags" style="font-size:18px">
+                             Tags: <span class="badge badge-secondary mr-1" th:each="tag: ${article.tags}" th:text="${tag.name}"></span>
+                        </div>
+						<div class="" th:utext="${article.content}">
+						</div>
+					</div>
+					<div class="comment-like-share mt-4">
+						<div id="fb-root"></div>
+						<script  src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=679136475896132&autoLogAppEvents=1"></script>
+						<div class="fb-like" th:data-href="${urlWeb}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+						<div class="fb-comments" th:data-href="${urlWeb}" data-numposts="5" data-width="100%"></div>
+					</div>
+                </div>
+				
+                <!-- Courses Sidebar -->
+                
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/client/ajax/course.js}"></script>
+    <!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

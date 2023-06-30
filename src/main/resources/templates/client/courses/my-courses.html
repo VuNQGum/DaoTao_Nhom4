@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{client/layouts/head :: head}">
+</head>
+
+<body id="courses">
+    <!-- Main Navbar-->
+    <header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+    <!-- Home -->
+
+    <div class="home">
+        <div class="breadcrumbs_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a th:href="@{/}">Trang chủ</a></li>
+                                <li><a th:href="@{/courses}">Khóa học</a></li>
+                                <li>Khóa học của tôi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses -->
+
+    <div class="courses">
+        <div class="container">
+            <div class="row">
+
+                <!-- Courses Main Content -->
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="courses_container">
+                        <div class="row courses_row">
+                            <!-- Course -->
+                            <th:block th:if="${#lists.isEmpty(list)}">
+                                <p class="text-center col-12 empty-course">Không có khóa học nào
+                                </p>
+                            </th:block>
+                            <th:block th:unless="${#lists.isEmpty(list)}">
+                                <div class="col-lg-6 course_col" th:each="element : ${list}">
+                                    <div class="course">
+                                        <div class="course_image">
+                                            <img th:src="@{${element.courseDto.image}}" alt="">
+                                        </div>
+                                        <div class="course_body">
+                                            <h3 class="course_title">
+												<a th:if="${element.courseDto.link == ''}" th:href="@{'/courses/my-courses/'+${element.courseDto.code}+'/learn'}" th:text="'Khóa học: '+${element.courseDto.name}">
+												</a>
+												<a th:unless="${element.courseDto.link == ''}" th:href="@{'/courses/my-courses/'+${element.courseDto.code}+'/learn'}" th:text="'Khóa học: '+${element.courseDto.name}">
+												</a>
+											</h3>
+                                            <div class="course_text">Bộ môn: <span th:text="${element.courseDto.category.name}"></span></div>
+                                            <div class="course_text" th:text="'Giảng viên: '+${element.courseDto.teacher.fullName}"></div>
+                                        </div>
+                                        <div class="course_footer">
+                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                                <div class="course_info">
+                                                    <i class="fa fa-users" aria-hidden="true"></i> <span th:text="${element.courseDto.quantityStudent} + ' sinh viên'"></span>
+                                                </div>
+                                                <div class="course_info">
+                                                    <i class="fa fa-file" aria-hidden="true"></i> <span th:text="${element.courseDto.quantityLesson} + ' bài giảng'"></span>
+                                                </div>
+                                                <div class="course_price ml-auto ">
+                                                    <a th:if="${element.courseDto.link == ''}" th:href="@{'/courses/my-courses/'+${element.courseDto.code}+'/learn'}" class="btn-detail">Vào học</a>
+                                                	<a th:unless="${element.courseDto.link == ''}" th:href="@{${element.courseDto.link}}"class="btn-detail" >Vào học</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/client/ajax/course.js}"></script>
+    <!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+</body>
+
+</html>

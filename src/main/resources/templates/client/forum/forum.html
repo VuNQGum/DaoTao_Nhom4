@@ -1,0 +1,162 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="~{client/layouts/head :: head}">
+   <style>
+      .post {
+      color: black;
+      }
+       a {
+      color: #9c1010 !important;
+      }
+     a:hover {
+      color: #9c101F !important;
+      }
+      .post .tags a {
+      color: white;
+      }
+      .post .tags a:hover {
+      background: #9c1010;
+      color: white
+      }
+      .menus {
+      font-size: 18px;
+      color: black
+      }
+      .menus .active {
+      color: #9c1010;
+      }
+      .menus a {
+      cursor: pointer;
+      color: black
+      }
+      .ml-80 {
+      margin-left: 80px
+      }
+      .btn-post a {
+      color: white;
+      cursor: pointer;
+      }
+      .courses div {
+      position: unset
+      }
+   </style>
+   <body id="courses">
+      <!-- Main Navbar-->
+     <header th:replace="~{client/layouts/header :: header}"> </header>
+     <div th:replace="~{client/layouts/menu :: menu}"></div>
+      <!-- Home -->
+      <div class="home">
+         <div class="breadcrumbs_container">
+            <div class="container">
+               <div class="row">
+                  <div class="col">
+                     <div class="breadcrumbs">
+                        <ul>
+                           <li><a th:href="@{/}">Trang chủ</a></li>
+                           <li>Diễn đàn</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Courses -->
+      <div class="courses">
+         <div class="container">
+            <div class="row">
+               <!-- Courses Main Content -->
+               <div class="col-lg-8">
+                  <div class="courses_container forum_container">
+                     <div class="row courses_row">
+                        <!-- Forum -->
+                        <div class="col-12 post">
+                          <div class="col-12 text-right"> <a  th:href="@{/forum/post}" sec:authorize="isAuthenticated()" style="color: #9c1010 "> <i class="fa fa-pencil"></i> Đăng bài</a></div>
+                           <div class="clearfix"></div>
+                           <hr>
+                           <th:block th:unless="${#lists.isEmpty(response.aaData)}">
+                              <div class="post" th:each="article : ${response.aaData}">
+                                 <h4 class="title">
+                                    <a th:href="@{'/forum/article/'+${article.id}}" th:text="${article.title}" style="color: #9c1010 ">
+                                    </a>
+                                 </h4>
+                                 <p class="description" th:text="${article.description}">
+                                 </p>
+                                 <div class="tags" style="font-size:18px">
+                                    <span class="badge badge-secondary mr-1" th:each="tag: ${article.tags}" th:text="${tag.name}"></span>
+                                 </div>
+                                 <div class="mt-2">
+                                    <span class="times">
+                                    <i class="fa fa-user"></i> <span th:text="${article.user.fullName}"></span>
+                                    </span>
+                                    <span class="times ml-3">
+                                    <i class="fa fa-calendar"></i>  <span th:text="${#dates.format(article.updatedAt, 'dd-MM-yyyy')}" ></span>
+                                    </span>
+                                    <span class="views ml-3">
+                                    <i class="fa fa-eye"></i> <span th:text="${article.views}"></span>
+                                    </span>
+                                 </div>
+                                 <hr>
+                                 
+                              </div>
+                           </th:block>
+                           <div class="row pagination_row">
+                              <div class="col">
+                                 <div class="pagination_container d-flex flex-row align-items-center justify-content-start col-lg-4 offset-lg-4">
+                                    <th:block th:unless="${response.iTotalPage < 1}">
+                                       <ul class="pagination_list">
+                                          <li th:if="${panigation.isBackSection}"><a th:href="@{/forum?__'page='+((${panigation.currentSection}-1)*3)}__"><i
+                                             class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                                          <li th:classappend="${index == panigation.currentPage} ? active : ''" th:each="index : ${#numbers.sequence(panigation.pageStart,(panigation.pageEnd))}">
+                                             <a th:href="@{/forum?__'page='+${index}__}" th:text="${index}"></a>
+                                          </li>
+                                          <li th:if="${panigation.isNextSection}"><a th:href="@{/forum?__'page='+((${panigation.currentSection}+1)*3-2)}__"><i
+                                             class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                       </ul>
+                                    </th:block>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- Courses Sidebar -->
+               <div class="col-lg-4">
+                  <div class="sidebar">
+                     <!-- Latest Course -->
+                     <div class="sidebar_section">
+                        <div class="sidebar_latest">
+                            <div class="sidebar_section">
+                            	<div class="sidebar_section_title">Tin tức</div>
+	                            <div class="sidebar_latest">
+									<th:block th:unless="${#lists.isEmpty(newsHome)}">
+		                                <!-- Latest Course -->
+		                                <div class="latest d-flex flex-row align-items-start justify-content-start" th:each="news : ${newsHome}">
+		                                    <div class="latest_image">
+		                                        <div>
+		                                            <img th:src="@{${news.image}}" alt="" style="height: 60px;width: 100%;">
+		                                        </div>
+		                                    </div>
+		                                    <div class="latest_content">
+		                                        <div class="latest_title">
+		                                            <a th:href="@{${news.href}}" target="_blank" th:text="${news.title}" style="font-size: 12px"></a>
+		                                        </div>
+		                                    </div>
+		                                </div>
+									</th:block>
+	                     
+	                            </div>
+                        	</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script th:src="@{/client/ajax/course.js}"></script>
+      <!-- Page Footer-->
+    <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+   </body>
+</html>

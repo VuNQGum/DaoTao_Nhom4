@@ -1,0 +1,102 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+   <head th:replace="~{client/layouts/head :: head}"></head>
+   <style>
+      .modal-dialog {
+      pointer-events: auto;
+      }
+      .btn-custom {
+      background: #9c1010;
+      border-color: #9c1020
+      }
+      a:hover {
+      color: #9c1030;
+      }
+      .color-default, a {
+      color: #9c1010
+      }
+      .contents-custom {
+      	padding-top:100px
+      }
+   </style>
+   <body>
+      <!-- Main Navbar-->
+      <header th:replace="~{client/layouts/header :: header}"> </header>
+      <div th:replace="~{client/layouts/menu :: menu}"></div>
+      <div class="contents-custom">
+         <div class="modal-dialog login-form" id="form-login">
+            <div class="">
+               <div class="modal-header">
+                  <p class="modal-title">Đăng nhập</p>
+               </div>
+               <div class="modal-body">
+                  <form th:action="@{/login}" method="POST">
+                     <p th:if="${param.error}" class="error">Sai email hoặc mật khẩu!!!
+                     </p>
+                     <p  style="display:none" id="captcha" class="error">Nhập sai mã captcha</p>
+                     <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                           <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <div class="input-group">
+                           <span class="input-group-addon"><i class="fa fa-lock"
+                              style="font-size: 25px;"></i></span>
+                           <input type="password" class="form-control" name="password" placeholder="Mật khẩu" required="required">
+                        </div>
+                     </div>
+                     <!-- <div class="mb-2 ">
+                     	 <div id="divGenerateRandomValues" style="background-image: url(&quot;/images/bg-captcha.jpeg&quot;); height: 50px;" class="float-left col-sm-3"><input id="txtNewInput" style="background: transparent; font-family: Arial; font-size: 40px; width: 100px; border: none; color: rgb(0, 0, 0);"></div>
+	                     <input type="text" id="textInput" class="form-control col-sm-6" style="height:50px;  margin-left:150px">
+	                     <button style="height:50px; margin-left:17px;font-size:30px" class="col-lg-2">
+	                     	<i class="fa fa-retweet"></i> 
+	                     </button>
+                     </div> -->
+                    <div style="margin-bottom: 100px">
+                    	<div class="form-group">
+                        	<button type="submit" class="btn btn-danger btn-block btn-lg btn-custom" id="login" >Đăng nhập</button>
+                     	</div>
+	                     <div class="float-left">
+	                        <span class="mr-2 color-default">Duy trì đăng nhập</span><input type="checkbox" name="remember-me" style="vertical-align:middle"/>
+	                     </div>
+	                     <div class="float-right">
+	                        <a href="#forgot_password" data-toggle="modal">Quên mật khẩu</a>
+	                     </div>
+	                     <div class=" text-center col-12" style="clear:both">
+                 			<span> Bạn chưa có tài khoản?</span> <a th:href="@{register}">Tạo tài khoản</a>
+               			</div>
+                    </div>
+                  </form>
+               </div>
+              
+            </div>
+         </div>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="forgot_password" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h4 class="modal-title text-center col-11" id="exampleModalLabel" style="padding-left: 3em;">Quên mật khẩu</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <input type="text" class="form-control" id="email_send_new_password" placeholder="Nhập email bạn đã đăng ký">
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                  <button type="button" class="btn btn-primary" id="btn-reset-password">Lấy lại mật khẩu</button>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div th:replace="~{client/layouts/loading :: loading}"> </div>
+      <!-- Page Footer-->
+<!--       <script th:src="@{/js/captcha.js}"></script>  
+ -->  <footer th:replace="~{client/layouts/footer :: footer}"> </footer>
+   </body>
+</html>

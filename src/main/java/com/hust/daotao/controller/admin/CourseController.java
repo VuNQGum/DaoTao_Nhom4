@@ -1,4 +1,4 @@
-package com.hust.thesis.controller.admin;
+package com.hust.daotao.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hust.thesis.dto.LessonOfCourseDto;
-import com.hust.thesis.dto.ProfileDto;
-import com.hust.thesis.entity.Course;
-import com.hust.thesis.entity.CourseProfile;
-import com.hust.thesis.entity.User;
-import com.hust.thesis.service.CategoryService;
-import com.hust.thesis.service.CourseProfileService;
-import com.hust.thesis.service.CourseService;
-import com.hust.thesis.service.CriteriaService;
-import com.hust.thesis.service.LessonOfCourseService;
-import com.hust.thesis.service.ProfileService;
-import com.hust.thesis.service.UserService;
-import com.hust.thesis.util.Constants;
+import com.hust.daotao.dto.LessonOfCourseDto;
+import com.hust.daotao.dto.ProfileDto;
+import com.hust.daotao.entity.Course;
+import com.hust.daotao.entity.CourseProfile;
+import com.hust.daotao.entity.User;
+import com.hust.daotao.service.CategoryService;
+import com.hust.daotao.service.CourseProfileService;
+import com.hust.daotao.service.CourseService;
+import com.hust.daotao.service.CriteriaService;
+import com.hust.daotao.service.LessonOfCourseService;
+import com.hust.daotao.service.ProfileService;
+import com.hust.daotao.service.UserService;
+import com.hust.daotao.util.Constants;
 
 @Controller
 @RequestMapping("/administrator/courses")
@@ -94,8 +94,8 @@ public class CourseController {
 			if (!checkProfileId(profileDto.getId(), courseProfiles))
 				newProfiles.add(profileDto);
 		}
-//		List<ProfileDto> profileDtos = profileService.getByStatusAndProfile();
-//		model.addAttribute("profileDtos", profileDtos);
+		// List<ProfileDto> profileDtos = profileService.getByStatusAndProfile();
+		// model.addAttribute("profileDtos", profileDtos);
 		model.addAttribute("course", course);
 		model.addAttribute("profileDtos", newProfiles);
 		model.addAttribute("courseProfiles", courseProfiles);
@@ -134,7 +134,7 @@ public class CourseController {
 			return "redirect:/admin/courses/" + courseId + "/lessons";
 		}
 		model.addAttribute("lesson", lessonDto);
-//		model.addAttribute("course", courseService.findById(courseId));
+		// model.addAttribute("course", courseService.findById(courseId));
 
 		return ROOT_LESSON + "/edit";
 	}
@@ -145,12 +145,12 @@ public class CourseController {
 		model.addAttribute("isCourses", true);
 		List<User> listStudent = userService.getListEmailStudent();
 		model.addAttribute("students", listStudent);
-//		model.addAttribute("categories", categoryService.getCategoryIsShow());
-//		User userLogin = userService.getUserCurrentLogin();
-//		if (userLogin.getRole().getId() != Constants.ROLE_TEACHER) {
-//			model.addAttribute("teachers", userService.getListTeacher());
-//			model.addAttribute("isAdmin", true);
-//		}
+		// model.addAttribute("categories", categoryService.getCategoryIsShow());
+		// User userLogin = userService.getUserCurrentLogin();
+		// if (userLogin.getRole().getId() != Constants.ROLE_TEACHER) {
+		// model.addAttribute("teachers", userService.getListTeacher());
+		// model.addAttribute("isAdmin", true);
+		// }
 		model.addAttribute("roleName", "administrator");
 		model.addAttribute("course_id", courseId);
 		return ROOT_COURSE + "/class";

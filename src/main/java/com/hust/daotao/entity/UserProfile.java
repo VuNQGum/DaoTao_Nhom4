@@ -1,4 +1,4 @@
-package com.hust.thesis.entity;
+package com.hust.daotao.entity;
 
 import java.util.Date;
 
@@ -56,7 +56,5 @@ public class UserProfile {
 		this.profile = profile;
 		this.value = value;
 	}
-	
-	
 
 }

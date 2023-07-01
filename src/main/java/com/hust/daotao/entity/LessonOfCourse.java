@@ -1,4 +1,4 @@
-package com.hust.thesis.entity;
+package com.hust.daotao.entity;
 
 import java.util.Date;
 

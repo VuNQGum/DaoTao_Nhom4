@@ -1,4 +1,4 @@
-package com.hust.thesis.entity;
+package com.hust.daotao.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -44,14 +44,15 @@ public class Criteria {
 	private Date updatedAt;
 	@Column(name = "deleted_at")
 	private Date deletedAt;
-//	@JsonBackReference
-//	@OneToMany(mappedBy = "criteria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	private List<KanseiWord> kanseiWords;
+	// @JsonBackReference
+	// @OneToMany(mappedBy = "criteria", cascade = CascadeType.ALL, fetch =
+	// FetchType.LAZY)
+	// private List<KanseiWord> kanseiWords;
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "type_id")
 	private CriteriaType criteriaType;
-	
+
 	@ManyToMany
 	@JoinTable(name = "criteria_kansei", joinColumns = @JoinColumn(name = "criteria_id"), inverseJoinColumns = @JoinColumn(name = "kansei_id"))
 	private List<KanseiWord> kanseiWords;

@@ -1,4 +1,4 @@
-package com.hust.thesis.entity;
+package com.hust.daotao.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -21,32 +21,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="article")
+@Table(name = "article")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	@Column(name="title")
+	@Column(name = "title")
 	private String title;
-	@Column(name="description")
+	@Column(name = "description")
 	private String description;
-	@Column(name="content")
+	@Column(name = "content")
 	private String content;
-	@Column(name="views")
+	@Column(name = "views")
 	private Integer views;
-	@Column(name="updated_at")
+	@Column(name = "updated_at")
 	private Date updatedAt;
-	@Column(name="deleted_at")
+	@Column(name = "deleted_at")
 	private Date deletedAt;
-	
+
 	@ManyToMany
 	@JoinTable(name = "article_tag", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private List<Tag> tags;
-	
+
 	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "user_id")

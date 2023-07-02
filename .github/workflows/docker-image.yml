@@ -99,6 +99,7 @@ jobs:
 
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v0.1.10
+      timeout-minutes: 5
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.HOST_USERNAME }}

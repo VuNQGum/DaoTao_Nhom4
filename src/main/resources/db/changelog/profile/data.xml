@@ -1,0 +1,67 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_profile" author="trungnn">
+		<insert tableName="profile">
+			<column name="name" value="Trình độ sinh viên" />
+			<column name="name_display_student_side" value="Trình độ sinh viên" />
+			<column name="name_display_teacher_side" value="Trình độ sinh viên" />
+			<column name="code" value="level" />
+			<column name="description" value="Trình độ sinh viên" />
+			<column name="weight" value="0.7" />
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Ngôn ngữ lập trình" />
+			<column name="name_display_student_side" value="Ngôn ngữ lập trình" />
+			<column name="name_display_teacher_side" value="Ngôn ngữ lập trình" />
+			<column name="code" value="experience_programing" />
+			<column name="description" value="Ngôn ngữ lập trình" />
+			<column name="is_multiple" valueBoolean="true"/>
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Trình độ tiếng Anh" />
+			<column name="name_display_student_side" value="Trình độ tiếng Anh" />
+			<column name="name_display_teacher_side" value="Trình độ tiếng Anh" />
+			<column name="code" value="level_english" />
+			<column name="description" value="Trình độ tiếng Anh" />
+			<column name="weight" value="0.7" />
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Kết quả học tập hiện tại" />
+			<column name="name_display_student_side" value="Kết quả học tập hiện tại" />
+			<column name="name_display_teacher_side" value="Kết quả học tập hiện tại" />
+			<column name="code" value="cpa_score" />
+			<column name="description" value="CPA kỳ mới nhất" />
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Chủ đề" />
+			<column name="name_display_student_side" value="Chủ đề quan tâm" />
+			<column name="name_display_teacher_side" value="Chủ đề có trong khóa học" />
+			<column name="code" value="topic" />
+			<column name="description" value="Chủ đề yêu thích" />
+			<column name="is_multiple" valueBoolean="true"/>
+			<column name="weight" value="0.7" />
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Định hướng tương lai" />
+			<column name="name_display_student_side" value="Định hướng tương lai" />
+			<column name="name_display_teacher_side" value="Định hướng phù hợp" />
+			<column name="code" value="orientation" />
+			<column name="description" value="Định hướng tương lai" />
+			<column name="is_multiple" valueBoolean="true"/>
+			<column name="weight" value="0.4" />
+		</insert>
+		<insert tableName="profile">
+			<column name="name" value="Mức độ khóa học" />
+			<column name="name_display_student_side" value="" />
+			<column name="name_display_teacher_side" value="Mức độ khóa học" />
+			<column name="code" value="difficult_level" />
+			<column name="description" value="Khả năng tiếp thu" />
+			<column name="weight" value="0.7" />
+			<column name="show" value="1" />
+		</insert>
+		
+	</changeSet>
+</databaseChangeLog>

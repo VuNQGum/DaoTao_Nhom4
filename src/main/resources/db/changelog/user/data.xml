@@ -1,0 +1,144 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_user" author="trungnn">
+		<insert tableName="user">
+			<column name="email" value="trungnn160697@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Ngọc Trung" />
+			<column name="phone" value="03696927189" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="1" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="teacher@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Teacher" />
+			<column name="phone" value="01696927188" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="goonera11.97@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Student" />
+			<column name="phone" value="01696927188" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="sondn@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Dương Ngọc Sơn" />
+			<column name="phone" value="01696927188" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="buixuanque8297@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Bùi Xuân Quế" />
+			<column name="phone" value="01696927187" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="3" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="haidt@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Đỗ Thị Hải" />
+			<column name="phone" value="01696927182" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="hangpt@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Phạm Thị Hằng" />
+			<column name="phone" value="01696927180" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="4" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="nhungnh@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Thị Hồng Nhung" />
+			<column name="phone" value="01626927187" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="haucl@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Lê Công Hậu" />
+			<column name="phone" value="01626927287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+		<insert tableName="user">
+			<column name="email" value="chunglt@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Lê Trọng Chung" />
+			<column name="phone" value="01624927287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="3" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="hmq@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Hoàng Mạnh Quân" />
+			<column name="phone" value="01624923287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="2" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="sonnh@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Hồng Sơn" />
+			<column name="phone" value="01624927287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="2" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="thangnk.hust@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Khắc Thắng" />
+			<column name="phone" value="01624927187" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="5" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="hieudh@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Đỗ Hoàng Hiếu" />
+			<column name="phone" value="01622927287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="thuongnk@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Thị Kiều Thương" />
+			<column name="phone" value="01624927287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="3" />
+			<column name="subject_id" value="2" />
+		</insert>
+			<insert tableName="user">
+			<column name="email" value="thao@gmail.com" />
+			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
+			<column name="full_name" value="Nguyễn Thảo" />
+			<column name="phone" value="01624127287" />
+			<column name="image" value="/images/hust-default.jpg" />
+			<column name="role_id" value="2" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

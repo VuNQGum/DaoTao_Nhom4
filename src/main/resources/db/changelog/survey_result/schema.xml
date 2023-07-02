@@ -1,0 +1,19 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="create_table_survey_result" author="trungnn">
+		<createTable tableName="survey_result">
+			<column name="id" type="int"  autoIncrement="true">
+				<constraints nullable="false" unique="true"
+					primaryKey="true" />
+			</column>
+			<column name="user_id" type="int"/>
+			<column name="criteria_id" type="int"/>
+			<column name="value" type="double"/>
+			<column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+			<column name="deleted_at" type="TIMESTAMP" defaultValueComputed="null"/>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

@@ -1,0 +1,62 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--table category-->
+  	<include file="changelog/category/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/category/data.xml" relativeToChangelogFile="true"/>
+  	<!-- table role -->
+  	<include file="changelog/role/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/role/data.xml" relativeToChangelogFile="true"/>
+	<!--table user-->
+  	<include file="changelog/user/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/user/data.xml" relativeToChangelogFile="true"/>
+  	<!--table profile-->
+  	<include file="changelog/profile/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/profile/data.xml" relativeToChangelogFile="true"/>
+  	<!--table profile_value-->
+  	<include file="changelog/profile_value/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/profile_value/data.xml" relativeToChangelogFile="true"/>
+  	<!--table user_profile-->
+  	<include file="changelog/user_profile/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table course-->
+  	<include file="changelog/course/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/course/data.xml" relativeToChangelogFile="true"/>
+  	<!--table course_profile-->
+  	<include file="changelog/course_profile/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table course_lesson-->
+  	<include file="changelog/lesson_of_course/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table criteria_type-->
+  	<include file="changelog/criteria_type/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/criteria_type/data.xml" relativeToChangelogFile="true"/>
+  	<!--table criteria-->
+  	<include file="changelog/criteria/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/criteria/data.xml" relativeToChangelogFile="true"/>
+  	<!--table kansei_word-->
+  	<include file="changelog/kansei_word/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/kansei_word/data.xml" relativeToChangelogFile="true"/>
+  	<!--table student_course-->
+  	<include file="changelog/student_course/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table course_evaluate-->
+  	<include file="changelog/course_evaluate/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table survey_result-->
+  	<include file="changelog/survey_result/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table survey_result-->
+  	<include file="changelog/criteria_kansei/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table criteria_kansei-->
+  	<include file="changelog/criteria_kansei/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/criteria_kansei/data.xml" relativeToChangelogFile="true"/>
+  	<!--table article-->
+  	<include file="changelog/article/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table tag-->
+  	<include file="changelog/tag/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/tag/data.xml" relativeToChangelogFile="true"/>
+  	<!--table article_tag-->
+  	<include file="changelog/article_tag/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table test-->
+  	<include file="changelog/test/schema.xml" relativeToChangelogFile="true"/>
+  	<!--table setting-->
+  	<include file="changelog/setting/schema.xml" relativeToChangelogFile="true"/>
+  	<include file="changelog/setting/data.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

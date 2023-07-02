@@ -1,0 +1,77 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_kansei_word" author="trungnn">
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không thú vị" />
+			<column name="positive_word" value="Thú vị" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Thiếu" />
+			<column name="positive_word" value="Đầy đủ" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Chưa hoàn hảo" />
+			<column name="positive_word" value="Hoàn hảo" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không tốt" />
+			<column name="positive_word" value="Tốt" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không tích cực" />
+			<column name="positive_word" value="Tích cực" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không hỗ trợ" />
+			<column name="positive_word" value="Hỗ trợ" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không hài lòng" />
+			<column name="positive_word" value="Hài lòng" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không khuyến khích" />
+			<column name="positive_word" value="Khuyến khích" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Thách thức" />
+			<column name="positive_word" value="Không thách thức" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không đạt" />
+			<column name="positive_word" value="Đạt" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không cần thiết" />
+			<column name="positive_word" value="Cần thiết" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Thấp" />
+			<column name="positive_word" value="Cao" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Phức tạp" />
+			<column name="positive_word" value="Không phức tạp" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không độc lập" />
+			<column name="positive_word" value="Độc lập" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không hợp tác" />
+			<column name="positive_word" value="Hợp tác" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không phù hợp" />
+			<column name="positive_word" value="Phù hợp" />
+		</insert>
+		<insert tableName="kansei_word">
+			<column name="negative_word" value="Không đạt được" />
+			<column name="positive_word" value="Đạt được" />
+		</insert>
+
+	</changeSet>
+</databaseChangeLog>

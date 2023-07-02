@@ -1,0 +1,50 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_category" author="trungnn">
+		<insert tableName="category">
+			<column name="name" value="Môn học đại cương" />
+			<column name="code" value="basic" />
+			<column name="description" value="Chủ đề này này bao gồm tài liệu, bài giảng các các môn cơ sở cốt lõi ngành CNTT" />
+			<column name="image" value="/images/hust-default.jpg" />	
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Công nghệ phần mềm" />
+			<column name="code" value="software_technology" />
+			<column name="description" value="Chủ đề này  gồm các khóa học cung cấp các kiến thức về: Nhập môn Công nghệ phần mềm; Lập trình hướng đối tượng; Thiết kế hướng đối tượng; Phân tích yêu cầu phần mềm; Thiết kế và xây dựng phần mềm; Mẫu thiết kế phần mềm; Tương tác người máy; Quản trị dự án; Mô hình hoá phần mềm; Kiểm thử và bảo đảm chất lượng phần mềm, Phát triển phần mềm trên các nền tảng: di động, web, đa nền tảng."  />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Hệ thống thông tin" />
+			<column name="code" value="information_system" />
+			<column name="description" value="Chủ đề này cung cấp các khóa học có khả năng cung cấp cho sinh viên các kiến thức về xử lý dữ liệu, thông tin, phát hiện tri thức, và công nghệ xây dựng các HTTT." />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Khoa học máy tính" />
+			<column name="code" value="computer_science" />
+			<column name="description" value="Chủ đề này cung cấp các khóa học có khả năng cung cấp cho sinh viên các kiến thức cốt lõi của các ngành Khoa học Máy tính, Kỹ thuật Máy tính, Khoa học dữ liệu và trí tuệ nhân tạo." />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Kỹ thuật máy tính" />
+			<column name="code" value="computer_engineering" />
+			<column name="description" value="Chủ đề này gồm các khóa học có khả năng cung cấp cho sinh viên kiến thức để thiết kế, xây dựng, thực hiện cả phần mềm lẫn phần cứng cho các hệ thống máy tính hiện đại và các thiết bị thông minh được điều khiển bằng máy tính." />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Truyền thông và mạng máy tính" />
+			<column name="code" value="communications_networks" />
+			<column name="description" value="Chủ đề này cung cấp các khóa học tập trung phát triển trong những mảng nghiên cứu cơ bản cũng như nghiên cứu ứng dụng trong việc phát triển những sản phẩm mang lại lợi ích cho cộng đồng về Các mô hình mạng tiên tiến, Các hệ thống dịch vụ trực tuyến thông minh; Hệ thống Xử lý dữ liệu và Truyền thông đa phương tiện; Nghiên cứu phát triển các sản phẩm hữu ích sử dụng công nghệ IoT và AI trong lĩnh vực nông nghiệp, thủy sản thông minh; Các hệ thống định vị và dẫn đường; Các giải pháp và hệ thống An toàn an ninh thông tin và mạng, …. " />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+		<insert tableName="category">
+			<column name="name" value="Ngoại ngữ" />
+			<column name="code" value="foreign_language" />
+			<column name="description" value="Chủ đề này này bao gồm các khóa học nâng cao trình độ ngoại ngữ cho học sinh, sinh viên." />
+			<column name="image" value="/images/hust-default.jpg" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

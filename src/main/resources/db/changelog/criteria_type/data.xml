@@ -1,0 +1,18 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_criteria_type" author="trungnn">
+		<insert tableName="criteria_type">
+			<column name="name" value="Bộ tiêu chí ICT" />
+			<column name="description" value="Bộ tiêu chí ICT" />
+			<column name="code" value="criteria_ict" />
+		</insert>
+		<insert tableName="criteria_type">
+			<column name="name" value="Bộ tiêu chí đại học Bách Khoa Hà Nội" />
+			<column name="description" value="Bộ tiêu chí đánh giá của đại học Bách Khoa Hà Nội" />
+			<column name="code" value="criteria_hust" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

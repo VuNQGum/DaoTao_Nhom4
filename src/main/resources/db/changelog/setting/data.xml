@@ -1,0 +1,13 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_setting" author="trungnn">
+		<insert tableName="setting">
+			<column name="name" value="Giá trị matching" />
+			<column name="code" value="boundary_decision" />
+			<column name="value" value="0.5" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

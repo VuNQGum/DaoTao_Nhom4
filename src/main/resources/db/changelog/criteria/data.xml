@@ -1,0 +1,62 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_criteria" author="trungnn">
+		<insert tableName="criteria">
+			<column name="name" value="Khám phá sự thật và phát triển kiến thức." />
+			<column name="code" value="tc_01" />
+			<column name="description" value="Khám phá nhiều hơn thế giới thực, sử dụng các công cụ và các thông tin cập nhật để xây dựng một nền tảng kiến thức sâu và rộng" />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Hỗ trợ việc học tập tích cực và đánh giá thực." />
+			<column name="code" value="tc_02" />
+			<column name="description" value="Học tập bằng hành động nhiều hơn là chỉ nghe và đọc" />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Tích cực hóa sự tham gia của người học bằng sự khuyến khích và thách thức" />
+			<column name="code" value="tc_03" />
+			<column name="description" value="Tạo động lực và sự thách thức nhằm khuyến khích người học tham gia tích cực hơn vào bài học." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Cung cấp công cụ để nâng cao chất lượng sản phẩm của  người học." />
+			<column name="code" value="tc_04" />
+			<column name="description" value="Cung cấp các công cụ viết, vẽ, tính toán cho những NH thao tác chậm, cơ sở để phát triển kỹ năng tư duy bậc cao." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Cung cấp thang cho các kỹ năng tư duy bậc cao." />
+			<column name="code" value="tc_05" />
+			<column name="description" value="Phát triển của các kỹ  năng tư duy bậc cao như ứng dụng, phân tích và tổng hợp và sáng tạo." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Tăng cường sự độc lập của người học." />
+			<column name="code" value="tc_06" />
+			<column name="description" value="Cung cấp các kinh nghiệm học tập những nơi và những lúc cần thiết cho phép người học học theo tốc độ riêng của bản thân." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Tăng cường sự hợp tác và phối hợp." />
+			<column name="code" value="tc_07" />
+			<column name="description" value="Hợp tác của nhiều người học trong và ngoài nhà trường và với giáo viên, phát triển một cộng đồng học tập giàu mạnh." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Gắn việc học với người học." />
+			<column name="code" value="tc_08" />
+			<column name="description" value="Cá nhân hóa NH thông qua việc sử dụng các hệ thống gia sư thông minh hay hệ thống quản lí việc học tập qua máy vi tính." />
+			<column name="type_id" value="1" />
+		</insert>
+		<insert tableName="criteria">
+			<column name="name" value="Vượt qua các trở ngại khó khăn thể chất." />
+			<column name="code" value="tc_09" />
+			<column name="description" value="Cung cấp, môi trường ICT, cơ hội cho các HS khuyết tật tham gia vào các hoạt động học tập như các người học bình thường khác." />
+			<column name="type_id" value="1" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

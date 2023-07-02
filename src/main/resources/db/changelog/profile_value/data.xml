@@ -1,0 +1,421 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="insert_table_profile_value" author="trungnn">
+
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Sinh viên năm nhất" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm nhất" />
+			<column name="name_display_teacher_side"
+				value="Sinh viên năm nhất" />
+			<column name="code" value="freshman" />
+			<column name="value" value="1" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Sinh viên năm hai" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm hai" />
+			<column name="name_display_teacher_side"
+				value="Sinh viên năm hai" />
+			<column name="code" value="sophomore" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Sinh viên năm ba" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm ba" />
+			<column name="name_display_teacher_side"
+				value="Sinh viên năm ba" />
+			<column name="code" value="third_year_student" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Sinh viên năm tư" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm tư" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm tư" />
+			<column name="name_display_teacher_side"
+				value="Sinh viên năm tư" />
+			<column name="code" value="fourth_year_student" />
+			<column name="value" value="4" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Sinh viên năm năm" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm năm" />
+			<column name="name_display_student_side"
+				value="Sinh viên năm năm" />
+			<column name="name_display_teacher_side"
+				value="Sinh viên năm năm" />
+			<column name="code" value="five_year_student" />
+			<column name="value" value="5" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="1" />
+			<column name="name" value="Khác" />
+			<column name="name_display_student_side" value="Khác" />
+			<column name="name_display_teacher_side" value="Khác" />
+			<column name="code" value="other" />
+			<column name="value" value="0" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="Java - Spring" />
+			<column name="name_display_student_side" value="Java - Spring" />
+			<column name="name_display_teacher_side" value="Java - Spring" />
+			<column name="code" value="java" />
+			<column name="value" value="1" />
+		</insert>
+		
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="Python" />
+			<column name="name_display_student_side" value="Python" />
+			<column name="name_display_teacher_side" value="Python" />
+			<column name="code" value="python" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="PHP - Laravel" />
+			<column name="name_display_student_side" value="PHP - Laravel" />
+			<column name="name_display_teacher_side" value="PHP - Laravel" />
+			<column name="code" value="php" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="Ruby on Rails" />
+			<column name="name_display_student_side" value="Ruby on Rails" />
+			<column name="name_display_teacher_side" value="Ruby on Rails" />
+			<column name="code" value="ror" />
+			<column name="value" value="4" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="JavaScript" />
+			<column name="name_display_student_side" value="JavaScript" />
+			<column name="name_display_teacher_side" value="JavaScript" />
+			<column name="code" value="js" />
+			<column name="value" value="5" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="C#" />
+			<column name="name_display_student_side" value="C#" />
+			<column name="name_display_teacher_side" value="C#" />
+			<column name="code" value="C#" />
+			<column name="value" value="6" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="C,C++" />
+			<column name="name_display_student_side" value="C,C++" />
+			<column name="name_display_teacher_side" value="C,C++" />
+			<column name="code" value="C" />
+			<column name="value" value="7" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="2" />
+			<column name="name" value="Khác" />
+			<column name="name_display_student_side" value="Khác" />
+			<column name="name_display_teacher_side" value="Khác" />
+			<column name="code" value="other" />
+			<column name="value" value="0" />
+		</insert>
+		
+		<insert tableName="profile_value">
+			<column name="profile_id" value="3" />
+			<column name="name" value="Trên 600 toeic" />
+			<column name="name_display_student_side"
+				value="Trên 600 toeic" />
+			<column name="name_display_teacher_side"
+				value="Trên 600 toeic" />
+			<column name="code" value="over_600" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="3" />
+			<column name="name" value="Từ 450 đến 600 toeic" />
+			<column name="name_display_student_side"
+				value="Từ 450 đến 600 toeic" />
+			<column name="name_display_teacher_side"
+				value="Từ 450 đến 600 toeic" />
+			<column name="code" value="450_to_600" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="3" />
+			<column name="name" value="Dưới 450 toeic" />
+			<column name="name_display_student_side"
+				value="Dưới 450 toeic" />
+			<column name="name_display_teacher_side"
+				value="Dưới 450 toeic" />
+			<column name="code" value="less_450" />
+			<column name="value" value="1" />
+		</insert>
+		
+		<insert tableName="profile_value">
+			<column name="profile_id" value="4" />
+			<column name="name" value="Trên 3.6" />
+			<column name="name_display_student_side" value="Trên 3.6" />
+			<column name="name_display_teacher_side" value="Trên 3.6" />
+			<column name="code" value="over_3.6" />
+			<column name="value" value="4" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="4" />
+			<column name="name" value="Từ 3.2 đến 3.6" />
+			<column name="name_display_student_side"
+				value="Từ 3.2 đến 3.6" />
+			<column name="name_display_teacher_side"
+				value="Từ 3.2 đến 3.6" />
+			<column name="code" value="3.2_to_3.6" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="4" />
+			<column name="name" value="Từ 2.5 đến 3.2" />
+			<column name="name_display_student_side"
+				value="Từ 2.5 đến 3.2" />
+			<column name="name_display_teacher_side"
+				value="Từ 2.5 đến 3.2" />
+			<column name="code" value="2.5_to_3.2" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="4" />
+			<column name="name" value="Dưới 2.5" />
+			<column name="name_display_student_side" value="Dưới 2.5" />
+			<column name="name_display_teacher_side" value="Dưới 2.5" />
+			<column name="code" value="less_2.5" />
+			<column name="value" value="1" />
+		</insert>
+		
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Big Data" />
+			<column name="name_display_student_side" value="Big Data" />
+			<column name="name_display_teacher_side" value="Big Data" />
+			<column name="code" value="big_data" />
+			<column name="value" value="1" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Deep Learning" />
+			<column name="name_display_student_side" value="Deep Learning" />
+			<column name="name_display_teacher_side" value="Deep Learning" />
+			<column name="code" value="deep_learning" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Machine Learning" />
+			<column name="name_display_student_side"
+				value="Machine Learning" />
+			<column name="name_display_teacher_side"
+				value="Machine Learning" />
+			<column name="code" value="machine_learning" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Lập trình web" />
+			<column name="name_display_student_side" value="Lập trình web" />
+			<column name="name_display_teacher_side" value="Lập trình web" />
+			<column name="code" value="web" />
+			<column name="value" value="4" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Lập trình mobile" />
+			<column name="name_display_student_side"
+				value="Lập trình mobile" />
+			<column name="name_display_teacher_side"
+				value="Lập trình mobile" />
+			<column name="code" value="mobile" />
+			<column name="value" value="5" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Xử lý ngôn ngữ tự nhiên" />
+			<column name="name_display_student_side"
+				value="Xử lý ngôn ngữ tự nhiên" />
+			<column name="name_display_teacher_side"
+				value="Xử lý ngôn ngữ tự nhiên" />
+			<column name="code" value="natural_language" />
+			<column name="value" value="6" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="BlockChain" />
+			<column name="name_display_student_side" value="BlockChain" />
+			<column name="name_display_teacher_side" value="BlockChain" />
+			<column name="code" value="blockChain" />
+			<column name="value" value="7" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Bảo mật thông tin" />
+			<column name="name_display_student_side"
+				value="Bảo mật thông tin" />
+			<column name="name_display_teacher_side"
+				value="Bảo mật thông tin" />
+			<column name="code" value="information_security" />
+			<column name="value" value="8" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Analyzing social networks" />
+			<column name="name_display_student_side"
+				value="Analyzing social networks" />
+			<column name="name_display_teacher_side"
+				value="Analyzing social networks" />
+			<column name="code" value="analyzing_social_networks" />
+			<column name="value" value="9" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Chatbot" />
+			<column name="name_display_student_side" value="Chatbot" />
+			<column name="name_display_teacher_side" value="Chatbot" />
+			<column name="code" value="chatbot" />
+			<column name="value" value="10" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Mạng Internet" />
+			<column name="name_display_student_side" value="Mạng Internet" />
+			<column name="name_display_teacher_side" value="Mạng Internet" />
+			<column name="code" value="internet_network" />
+			<column name="value" value="11" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="5" />
+			<column name="name" value="Khác" />
+			<column name="name_display_student_side" value="Khác" />
+			<column name="name_display_teacher_side" value="Khác" />
+			<column name="code" value="other" />
+			<column name="value" value="0" />
+		</insert>
+
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Lập trình viên" />
+			<column name="name_display_student_side"
+				value="Lập trình viên" />
+			<column name="name_display_teacher_side"
+				value="Lập trình viên" />
+			<column name="code" value="developer" />
+			<column name="value" value="1" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Khoa học dữ liệu" />
+			<column name="name_display_student_side"
+				value="Nhà khoa học dữ liệu" />
+			<column name="name_display_teacher_side"
+				value="Khoa học dữ liệu" />
+			<column name="code" value="data_scientist" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Học máy/trí tuệ nhân tạo" />
+			<column name="name_display_student_side"
+				value="Kỹ sư học máy/trí tuệ nhân tạo" />
+			<column name="name_display_teacher_side"
+				value="Học máy/trí tuệ nhân tạo" />
+			<column name="code" value="ai_engineer" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Bảo mật thông tin" />
+			<column name="name_display_student_side"
+				value="Chuyên gia bảo mật " />
+			<column name="name_display_teacher_side"
+				value="Bảo mật thông tin" />
+			<column name="code" value="security_professionals" />
+			<column name="value" value="4" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Quản trị cơ sở dữ liệu" />
+			<column name="name_display_student_side"
+				value="Quản trị cơ sở dữ liệu" />
+			<column name="name_display_teacher_side"
+				value="Quản trị cơ sở dữ liệu" />
+			<column name="code" value="database_administrator" />
+			<column name="value" value="5" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Quản trị hệ thống và mạng " />
+			<column name="name_display_student_side"
+				value="Quản trị hệ thống và mạng " />
+			<column name="name_display_teacher_side"
+				value="Quản trị hệ thống và mạng " />
+			<column name="code" value="system_administrator" />
+			<column name="value" value="6" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="6" />
+			<column name="name" value="Khác " />
+			<column name="name_display_student_side" value="Khác " />
+			<column name="name_display_teacher_side" value="Khác" />
+			<column name="code" value="other" />
+			<column name="value" value="0" />
+		</insert>
+	
+		<insert tableName="profile_value">
+			<column name="profile_id" value="7" />
+			<column name="name" value="Cơ bản" />
+			<column name="name_display_student_side" value="Cơ bản" />
+			<column name="name_display_teacher_side" value="Cơ bản" />
+			<column name="code" value="basic" />
+			<column name="value" value="0" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="7" />
+			<column name="name" value="Dễ" />
+			<column name="name_display_student_side" value="Dễ" />
+			<column name="name_display_teacher_side" value="Dễ" />
+			<column name="code" value="easy" />
+			<column name="value" value="1" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="7" />
+			<column name="name" value="Trung bình" />
+			<column name="name_display_student_side" value="Trung bình" />
+			<column name="name_display_teacher_side" value="Trung bình" />
+			<column name="code" value="medium" />
+			<column name="value" value="2" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="7" />
+			<column name="name" value="Nâng cao" />
+			<column name="name_display_student_side" value="Nâng cao" />
+			<column name="name_display_teacher_side" value="Nâng cao" />
+			<column name="code" value="advanced" />
+			<column name="value" value="3" />
+		</insert>
+		<insert tableName="profile_value">
+			<column name="profile_id" value="7" />
+			<column name="name" value="Khó" />
+			<column name="name_display_student_side" value="Khó" />
+			<column name="name_display_teacher_side" value="Khó" />
+			<column name="code" value="difficult" />
+			<column name="value" value="4" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>

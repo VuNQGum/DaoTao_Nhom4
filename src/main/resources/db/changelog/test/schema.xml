@@ -1,0 +1,23 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	<changeSet id="create_table_test" author="trungnn">
+		<createTable tableName="test">
+			<column name="id" type="int"  autoIncrement="true">
+				<constraints nullable="false" unique="true"
+					primaryKey="true" />
+			</column>
+			<column name="question" type="text"/>
+			<column name="answer_a" type="text"/>
+			<column name="answer_b" type="text"/>
+			<column name="answer_c" type="text"/>
+			<column name="answer_d" type="text"/>
+			<column name="answer_true" type="text"/>
+			<column name="status" type="boolean" defaultValueBoolean="true"/>
+			<column name="updated_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+			<column name="deleted_at" type="TIMESTAMP" defaultValueComputed="null"/>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

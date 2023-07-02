@@ -134,7 +134,8 @@ Workflow sẽ được thực thi khi có các sự kiện kích hoạt giúp th
 ![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/94282822/286d821d-0864-47d7-9664-eda99079b00f)
 
 3. Cấu hình security cho phép HTTP traffic từ internet 
-![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/94282822/6f6c0c89-0984-4f96-9f67-fd4b307bd478)
+![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/94282822/8b10ff25-12f4-4c90-90d1-2ad4146d18b3)
+
 4. Cài đặt runtime environment server: open-jdk,git,docker,nginx , docker -compose ,
  Cấu hình nginx để chuyển tiếp request vào cổng chạy server (3000):
 Sửa trong file etc/nginx/ngix.config thay thế khối server trong khối http 

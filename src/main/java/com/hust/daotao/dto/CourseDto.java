@@ -1,7 +1,7 @@
 package com.hust.daotao.dto;
 
-import com.hust.thesis.entity.Category;
-import com.hust.thesis.entity.User;
+import com.hust.daotao.entity.Category;
+import com.hust.daotao.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

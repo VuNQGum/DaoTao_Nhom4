@@ -16,7 +16,7 @@ services:
     # image: ilearning
     image: __DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
     ports:
-      - "8080:8080"
+      - "3000:8080"
     depends_on:
       - postgres
     environment:

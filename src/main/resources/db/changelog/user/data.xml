@@ -5,9 +5,9 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 	<changeSet id="insert_table_user" author="trungnn">
 		<insert tableName="user">
-			<column name="email" value="trungnn160697@gmail.com" />
+			<column name="email" value="admin@gmail.com" />
 			<column name="password" value="$2a$12$uSvrU8MThhOG5uaZtph3JOnP4xRHqWlA2AZhoZdALSHNSZ538ydIS" />
-			<column name="full_name" value="Nguyễn Ngọc Trung" />
+			<column name="full_name" value="Nguyễn Quang Vũ" />
 			<column name="phone" value="03696927189" />
 			<column name="image" value="/images/hust-default.jpg" />
 			<column name="role_id" value="1" />

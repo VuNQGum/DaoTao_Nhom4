@@ -84,3 +84,69 @@ Trong đó:
 
 Workflow sẽ được thực thi khi có các sự kiện kích hoạt giúp thực hiện build chương trình, tạo docker image, push lên docker hub và sử dụng nó cho việc deploy.
 # IV. Deploy Server
+1. Tạo AWS EC2 với các config sau 
+{
+  "MaxCount": 1,
+  "MinCount": 1,
+  "ImageId": "ami-05ffd9ad4ddd0d6e2",
+  "InstanceType": "t2.micro",
+  "KeyName": "chuyende",
+  "EbsOptimized": false,
+  "BlockDeviceMappings": [
+    {
+      "DeviceName": "/dev/xvda",
+      "Ebs": {
+        "Encrypted": false,
+        "DeleteOnTermination": true,
+        "SnapshotId": "snap-0a2f3523aee5d97d8",
+        "VolumeSize": 10,
+        "VolumeType": "gp2"
+      }
+    }
+  ],
+  "NetworkInterfaces": [
+    {
+      "AssociatePublicIpAddress": true,
+      "DeviceIndex": 0,
+      "Groups": [
+        "<groupId of the new security group created below>"
+      ]
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "chuyende"
+        }
+      ]
+    }
+  ],
+  "PrivateDnsNameOptions": {
+    "HostnameType": "ip-name",
+    "EnableResourceNameDnsARecord": true,
+    "EnableResourceNameDnsAAAARecord": false
+  }
+}
+2. Mua tên miền , cấu hình DNS để trỏ tên miền về public IPv4 address của server
+![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/94282822/286d821d-0864-47d7-9664-eda99079b00f)
+
+3. Cấu hình security cho phép HTTP traffic từ internet 
+![image](https://github.com/VuNQGum/DaoTao_Nhom4/assets/94282822/6f6c0c89-0984-4f96-9f67-fd4b307bd478)
+4. Cài đặt runtime environment server: open-jdk,git,docker,nginx , docker -compose ,
+ Cấu hình nginx để chuyển tiếp request vào cổng chạy server (3000):
+Sửa trong file etc/nginx/ngix.config thay thế khối server trong khối http 
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+

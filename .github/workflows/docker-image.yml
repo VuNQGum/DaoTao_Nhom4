@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -99,5 +101,6 @@ jobs:
         key: ${{ secrets.HOST_KEY }}
         script: |
           cd chuyende
+          ls
           docker-compose up
           docker container ls

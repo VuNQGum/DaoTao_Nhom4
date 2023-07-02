@@ -1,0 +1,120 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{admin/layouts/head :: head}">
+</head>
+<style>
+    #description {
+    	width: 100%;
+    	height: 100px
+    }
+    #form-content {
+    	display:none;
+    }
+    .text-note  {
+    	color:red;
+    	font-size: 12px;
+    }
+</style>
+
+<body>
+    <div class="page">
+        <!-- Main Navbar-->
+		<header th:replace="~{admin/layouts/header :: header}"> </header>            
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Khóa học: <span th:text="${course.name}"></span></h2>
+                    </div>
+                </header>
+                <!-- Breadcrumb-->
+                <div class="breadcrumb-holder container-fluid">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item" th:if="${isAdmin}"><a th:href="@{'/'+${roleName}+'/'}">Trang
+								chủ</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{'/'+${roleName}+'/courses/' + ${course.id} + '/lessons'}">Quản lý bài giảng</a></li>
+                        <li class="breadcrumb-item active">Thêm mới</li>
+                    </ul>
+                </div>
+                <section class="tables">
+                    <div class="container-fluid">
+                    	<div th:replace="~{admin/layouts/loading :: loading}"> </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">	                                    
+                                       <h3 class="h4" style="width:80%">Thêm mới bài giảng</h3>
+                                       <input type="hidden" id="course_id" th:value="${course.id}">
+                                       <div class="back">										
+											<a th:href="@{'/'+${roleName}+'/courses/' + ${course.id} + '/lessons'}" ><i class="fa fa-arrow-left"></i> Quay lại</a>
+										</div>
+                                    </div>
+                                    <div class="card-body">
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group col-lg-6 float-left">
+                                                    <label>Tên bài giảng<span class="text-danger ml-1">*</span></label>
+                                                    <input type="text" class="form-control" id="lesson-name" name="name" placeholder="Nhập tên bài giảng">
+                                                </div>
+                                                <div class="form-group col-lg-6 float-left">
+                                                    <label>Mã bài giảng<span class="text-danger ml-1">*</span></label>
+                                                    <input type="text" class="form-control" id="lesson-code" name="code" placeholder="Nhập mã bài giảng">
+                                                </div>
+                                                <div class="form-group col-lg-6 float-left">
+                                                    <label class="mr-3">Trạng thái</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="status-show" value="1" checked>
+                                                        <label class="form-check-label">Hiện thị</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="status-not-show" value="0">
+                                                        <label class="form-check-label">Không hiện thị</label>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="form-group col-lg-12">
+                                                    <label>Mô tả</label>
+                                                    <textarea id="description" name="description"></textarea>
+                                                </div>
+                                                <div class="form-group col-lg-12" id="form-video">
+	                                                <label>Bài giảng<span class="text-danger ml-1">*</span></label>
+	                                                <div class="custom-file form-group">
+													    <input type="file" class="custom-file-input" id="url" name="url">
+													    <label class="custom-file-label" for="customFile">Chọn file</label>
+	  												</div>
+	  												<div class="custom-file form-group mt-2">
+	                                                    <input type="text" class="form-control" id="link_other" name="link_other" placeholder="Nhập link bài giảng thay thế cho file upload">
+													    <input type="text" class="custom-file-input" id="link_other" name="link_other">
+	  												</div>
+	  												
+                                                </div>
+                                              	
+                                            </div>
+                                            <div class="col-lg-12 text-center mt-5">
+	                                             <button class="btn btn-danger btn-custom" id="btn-reset-modal-add">Hủy</button>
+	                                             <button class="btn btn-success btn-custom" id="btn-add">Thêm mới</button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- Page Footer-->
+                <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+                <script>
+            		CKEDITOR.replace('description');
+             </script>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/admin/ajax/lesson.js}"></script>
+</body>
+
+</html>

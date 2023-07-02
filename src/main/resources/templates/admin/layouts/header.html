@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<header class="header" th:fragment="header">
+	    <nav class="navbar">
+	        <div class="container-fluid">
+	            <div class="navbar-holder d-flex align-items-center justify-content-between">
+	                <!-- Navbar Header-->
+	                <div class="navbar-header">
+	                    <!-- Navbar Brand -->
+	                    <a th:href="@{/admin}" class="navbar-brand d-none d-sm-inline-block logo-text">
+								Hust<span class="color-default">E</span>
+	                    </a>
+	                    <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><i class="fa fa-bars"></i></a>
+	                </div>
+	                <!-- Navbar Menu -->
+	                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+	                    <!-- Logout    -->
+	                    <li class="nav-item">
+	                        <a th:href="@{/logout}" class="nav-link logout"> <span class="d-none d-sm-inline">Thoát</span><i class="fa fa-sign-out-alt"></i></a>
+	                    </li>
+	                </ul>
+	            </div>
+	        </div>
+	    </nav>
+	</header>
+</html>

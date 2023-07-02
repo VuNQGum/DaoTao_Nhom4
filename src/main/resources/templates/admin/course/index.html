@@ -1,0 +1,358 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{admin/layouts/head :: head}">
+</head>
+<style>
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 95%;
+            margin: 1.75rem auto;
+        }
+    }
+    
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 0%;
+        color: black;
+        font-size: 20px;
+    }
+    
+    .modal-dialog {
+        pointer-events: auto;
+    }
+    
+    .btn-custom {
+        background: #9c1010;
+        border-color: #9c1020
+    }
+    
+    a:hover {
+        color: #9c1030;
+    }
+    
+    .color-default,
+    a {
+        color: #9c1010
+    }
+    
+    .scale ul {
+        padding: 0;
+    }
+    
+    .scale ul li {
+        float: left;
+        width: 20%;
+    }
+    
+    .button {
+        width: 100%;
+        text-align: center
+    }
+    
+    .button .send {
+        width: 100px;
+        height: 32px;
+        background: blue;
+        border: blue;
+        border-radius: 5px;
+        color: white
+    }
+    
+    .button .cancle {
+        width: 100px;
+        height: 32px;
+        background: red;
+        border: red;
+        border-radius: 5px;
+        color: white
+    }
+    
+    input[type="range"] {
+        width: 98%;
+    }
+    
+    .pre-next a:hover {
+        color: black
+    }
+    
+    div {
+        position: unset;
+    }
+    
+    .thread-custom {
+        background: #9c1010;
+        color: white;
+    }
+ul li {
+    	list-style-type: none;
+    } 
+    #modal_evaluate .custom-control-label::before {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;
+     width: 0; 
+     height: 0; 
+    pointer-events: none;
+    content: "";
+     border: none;
+     }
+</style>
+
+<body>
+    <div class="page">
+        <!-- Main Navbar-->
+		<header th:replace="~{admin/layouts/header :: header}"> </header>            
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Quản lý khóa học</h2>
+                    </div>
+                </header>
+                <!-- Breadcrumb-->
+                <div class="breadcrumb-holder container-fluid" th:if="${isAdmin}">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item" ><a th:href="@{/administrator/}">Trang
+								chủ</a></li>
+                        <li class="breadcrumb-item active">Quản lý khóa học</li>
+                    </ul>
+                </div>
+                <section class="tables">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <input type="hidden" id="role_id" th:value="${roleId}">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4">Danh sách khóa học</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <div class="box-search">
+                                                <div class="form-group has-search float-left" th:classappend="${isAdmin} ? col-lg-4 : col-lg-3">
+                                                    <select class="form-control" id="status">
+                                                        <option value="">Trạng thái</option>
+                                                        <option value="1">Hiển thị</option>
+                                                        <option value="0">Không hiển thị</option>
+                                                    </select>
+                                                </div>
+                                                <th:block th:unless="${#lists.isEmpty(categories)}">
+                                                    <div class="form-group has-search float-left" th:classappend="${isAdmin} ? col-lg-4 : col-lg-3">
+                                                        <select class="form-control" id="category">
+                                                            <option value="">Bộ môn</option>
+
+                                                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                                                        </select>
+                                                    </div>
+                                                </th:block>
+                                                <th:block th:unless="${#lists.isEmpty(teachers)}">
+                                                    <div class="form-group has-search col-lg-4 float-left" sec:authorize='hasAuthority("ADMIN")'>
+                                                        <select class="form-control" id="user">
+                                                            <option value="">Giảng viên</option>
+                                                            <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.fullName}"></option>
+                                                        </select>
+                                                    </div>
+                                                </th:block>
+                                                <div class="form-group has-search  float-left" th:classappend="${isAdmin} ? col-lg-6 : col-lg-3">
+                                                    <span class="fa fa-search form-control-feedback"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên ..." id="input-name">
+                                                </div>
+                                                <div class="form-group has-search float-left" th:classappend="${isAdmin} ? col-lg-6 : col-lg-3">
+                                                    <span class="fa fa-search form-control-feedback"></span>
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo mã ..." id="input-code">
+                                                </div>
+                                                <div class="button-search">
+                                                    <button id="btn-reset" class="btn-reset">
+                                                        <span class="fa fa-sync mr5px"></span>Tạo lại
+                                                    </button>
+                                                    <button id="btn-search" class="btn-search">
+                                                        <span class="fa fa-search mr5px"></span>Tìm kiếm
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <table class="table table-hover table-bordered" id="tbl-courses">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center  ">Giảng viên</th>
+                                                        <th class="text-center ">Tên khóa học</th>
+                                                        <th class="text-center  ">Mã khóa học</th>
+                                                        <th class="text-center  ">Thể loại</th>
+                                                        <th class="text-center ">Trạng thái</th>
+                                                        <th class="text-center ">Hành động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- Page Footer-->
+                <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold" id="modal-title">Thêm mới người dùng</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="user-id" />
+                            <div class="modal-body mx-3">
+                                <div class="md-form mb-3">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass" class="float-left mr-4">Đối tượng</label>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="user-role" id="role_student" value="3" checked>Học sinh, sinh viên
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="user-role" value="2" id="role_teacher">Giảng viên
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="md-form mb-3">
+                                    <label data-error="wrong" data-success="right" for="defaultForm">Tên người dùng<span class="text-danger ml-1">*</span></label>
+                                    <input type="text" id="user-name" class="form-control">
+                                </div>
+
+                                <div class="md-form mb-3">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass">Email<span class="text-danger ml-1">*</span></label>
+                                    <input type="text" id="user-email" class="form-control validate">
+                                </div>
+                                <div class="md-form mb-3">
+                                    <label data-error="wrong" data-success="right" for="defaultForm-pass" class="float-left mr-4">Trạng thái
+                                    </label>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="user-status" id="status_active" checked value="1">Hoạt động
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="user-status" id="status_no_active" value="0">Không hoạt động
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <div id="button-add">
+                                    <button class="btn btn-danger btn-custom" id="btn-reset-modal-add">Hủy</button>
+                                    <button class="btn btn-success btn-custom" id="btn-add">Thêm mới</button>
+                                </div>
+                                <div id="button-edit" style="display:none">
+                                    <button class="btn btn-danger btn-custom" id="btn-reset-modal-edit">Hủy</button>
+                                    <button class="btn btn-success btn-custom" id="btn-edit">Lưu thay đổi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--modal evualate-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal_evaluate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-right col-7" id="exampleModalLabel">Đánh giá khóa học</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                	<input type="hidden" id="course_id" th:value="${role}">
+                    <form class=" col-lg-12" id="form-criteria">
+                        <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+
+                            <div class="carousel-inner">
+                                <th:block th:unless="${#lists.isEmpty(listCriteria)}">
+                                    <div class="carousel-item" th:classappend="${iterStat.count == 1} ? active : ''" th:each="criteria, iterStat : ${listCriteria}">
+                                        <table class="table">
+                                            <thead class="thread-custom">
+                                                <tr>
+                                                    <th colspan="3" class="text-center"><span th:text="'Tiêu chí '+${iterStat.count} + ': ' +${criteria.name}"></span></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <th:block th:unless="${#lists.isEmpty(criteria.kanseiWords)}">
+                                                    <tr th:each="kansei : ${criteria.kanseiWords}">
+                                                        <td scope="row" width="20%; vertical-align: middle" class="text-left">
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" th:name="'criteria_'+${criteria.id}+'_'+${kansei.id}" value="-1">
+                                                                <label class="custom-control-label" for="customRadioInline1" style="line-height: 15px;" th:text="${kansei.negativeWord}"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td width="20%; vertical-align: middle" class="text-left">
+                                                            <div class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" th:name="'criteria_'+${criteria.id}+'_'+${kansei.id}" value="1">
+                                                                <label class="custom-control-label" for="customRadioInline2" style="line-height: 15px;" th:text="${kansei.positiveWord}"></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="scale">
+                                                                <input type="range" min="0" max="1" step="0.25" value="0" th:name="'value_'+${criteria.id}+'_'+${kansei.id}">
+                                                                <ul>
+                                                                    <li class="text-left" style="width: 17%">
+                                                                        Phản đối
+                                                                    </li>
+                                                                    <li style="padding-left: 5px">
+                                                                        Gần như phản đối
+                                                                    </li>
+                                                                    <li style="padding-left: 85px">
+                                                                        Trung lập
+                                                                    </li>
+                                                                    <li style="padding-left: 111px; width: 22%">
+                                                                        Gần như đồng ý
+                                                                    </li>
+                                                                    <li class="text-right">
+                                                                        Đồng ý
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </th:block>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </th:block>
+                            </div>
+                            <div class="pre-next">
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <i class="fa fa-chevron-left"></i>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <button type="reset" class="btn btn-danger trans_200">Đánh giá lại</button>
+                            <button class="btn-info btn trans_200">Gửi đánh giá</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/admin/ajax/course.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/layouts/head :: head}">
+</head>
+<style>
+	.col-1 {
+		width: 20%
+	}
+	.col-2 {
+		width: 20%
+	}
+	.col-3 {
+		width: 13%
+	}
+	.col-4 {
+		width: 28%
+	}
+</style>
+<body>
+	<div class="page">
+		<!-- Main Navbar-->
+		<header th:replace="~{admin/layouts/header :: header}"> </header>            
+		<div class="page-content d-flex align-items-stretch">
+			<!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+			<div class="content-inner">
+				<!-- Page Header-->
+				<header class="page-header">
+					<div class="container-fluid">
+						<h2 class="no-margin-bottom">Cài đặt</h2>
+					</div>
+				</header>
+				<!-- Breadcrumb-->
+				<div class="breadcrumb-holder container-fluid">
+					<ul class="breadcrumb">
+						<li class="breadcrumb-item"><a th:href="@{/admin/}">Trang
+								chủ</a></li>
+						<li class="breadcrumb-item active color">Cài đặt</li>
+					</ul>
+				</div>
+				<section class="tables">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header d-flex align-items-center">
+										<h3 class="h4">Danh sách cài đặt</h3>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<div class="box-search">
+												<div class="form-group has-search col-lg-6  float-left">
+													<span class="fa fa-search form-control-feedback"></span> <input
+														type="text" class="form-control"
+														placeholder="Tìm kiếm theo tên ..." id="input-name">
+												</div>
+												<div class="form-group has-search col-lg-6  float-left">
+													<span class="fa fa-search form-control-feedback"></span> <input
+														type="text" class="form-control"
+														placeholder="Tìm kiếm theo mã ..." id="input-code">
+												</div>
+												<div class="button-search">
+													<button id="btn-reset" class="btn-reset">
+														<span class="fa fa-sync mr5px"></span>Tạo lại
+													</button>
+													<button id="btn-search" class="btn-search">
+														<span class="fa fa-search mr5px"></span>Tìm kiếm
+													</button>
+												</div>
+											</div>
+											<table class="table table-hover table-bordered"
+												id="tbl-settings">
+												<thead>
+													<tr>
+														<th class="text-center col-1">Tên</th>
+														<th class="text-center col-2 ">Mã</th>
+														<th class="text-center col-2 ">Giá trị</th>
+														<th class="text-center col-4">Mô tả</th>
+														<th class="text-center col-5">Hành động</th>
+													</tr>
+												</thead>
+												<tbody>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</section>
+				<!-- Page Footer-->
+                <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+				<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+					aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header text-center">
+								<h4 class="modal-title w-100 font-weight-bold" id="modal-title">Thêm mới setting</h4>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<input type="hidden" id="id"/>
+							<div class="modal-body mx-3">
+								<div class="md-form mb-3">
+									<label data-error="wrong" data-success="right"
+										for="defaultForm">Tên thông số<span
+										class="text-danger ml-1">*</span></label> <input type="text"
+										id="name" class="form-control">
+								</div>
+
+								<div class="md-form mb-3">
+									<label data-error="wrong" data-success="right"
+										for="defaultForm-pass">Mã thông số<span
+										class="text-danger ml-1">*</span></label> <input type="text"
+										id="code" class="form-control">
+								</div>
+								<div class="md-form mb-3">
+									<label data-error="wrong" data-success="right"
+										for="defaultForm-pass">Giá trị<span
+										class="text-danger ml-1">*</span></label> <input type="number" step=0.1
+										id="value" class="form-control">
+								</div>
+								<div class="md-form mb-3">
+									<label data-error="wrong" data-success="right"
+										for="defaultForm-pass">Mô tả</label>
+									<textarea id="description"
+										class="form-control validate"></textarea>
+								</div>
+							</div>
+							<div class="modal-footer d-flex justify-content-center">
+								<div id="button-add">
+									<button class="btn btn-danger btn-custom" id="btn-reset-modal-add">Hủy</button>
+									<button class="btn btn-success btn-custom" id="btn-add">Thêm mới</button>
+								</div>
+								<div id="button-edit" style="display:none">
+									<button class="btn btn-danger btn-custom" id="btn-reset-modal-edit">Hủy</button>
+									<button class="btn btn-success btn-custom" id="btn-edit">Lưu thay đổi</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/admin/ajax/setting.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<div th:fragment="footer">
+		<footer class="main-footer"  >
+		    <div class="container-fluid">
+		        <div class="row">
+		            <div class="col-sm-6">
+		                <p>Thesis</p>
+		            </div>
+		            <div class="col-sm-6 text-right">
+		                <p>Developer <a href="https://bootstrapious.com/p/admin-template" class="external">Nguyễn Ngọc Trung</a></p>
+		            </div>
+		        </div>
+		    </div>
+		</footer>
+	  	<script th:src="@{/admin/vendor/jquery/jquery.min.js}"></script>
+	    <script th:src="@{/admin/vendor/popper.js/umd/popper.min.js}">
+	    </script>
+	    <script th:src="@{/admin/vendor/bootstrap/js/bootstrap.min.js}"></script>
+	    <script th:src="@{/admin/vendor/jquery.cookie/jquery.cookie.js}">
+	    </script>
+	    <script th:src="@{/admin/vendor/jquery-validation/jquery.validate.min.js}"></script>
+	    <!-- Main File-->
+	    <script th:src="@{/admin/js/front.js}"></script>
+	    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js}"></script>
+	    <!--data table-->
+	    <script th:src="@{https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js}"></script>
+	   	<script th:src="@{/js/const.js}"></script>
+	    <script th:src="@{/js/ajax-login.js}" sec:authorize="isAuthenticated()"></script>
+		<script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>	
+  		<script th:src="@{https://code.jquery.com/ui/1.12.1/jquery-ui.js}"></script>
+  		
+  		<!-- multi select css  -->
+	   	<script  th:src="@{/js/tokenize2.min.js}"></script>
+	   	<script th:src="@{https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js}"></script>
+	   	
+	</div>
+</html>

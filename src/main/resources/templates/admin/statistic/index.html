@@ -1,0 +1,143 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/layouts/head :: head}"></head>
+   <style>
+      .card-custom {
+      width: 99%;
+      margin: 20px auto;	
+      }
+      .col-lg-6 {
+      	width: 49%
+      }
+   </style>
+   	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js}"></script>
+	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js}"></script>
+   <body>
+      <div class="page">
+         <!-- Main Navbar-->
+         <header th:replace="~{admin/layouts/header :: header}"> </header> 
+         <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+            <div class="content-inner">
+               <!-- Page Header-->
+               <header class="page-header">
+                  <div class="container-fluid">
+                     <h2 class="no-margin-bottom">Thống kê</h2>
+                  </div>
+               </header>
+               <!-- Dashboard Counts Section-->
+               <section class="dashboard-counts no-padding-bottom">
+                  <div class="container-fluid">
+                     <div class="row bg-white has-shadow">
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6">
+                           <div class="item d-flex align-items-center">
+                              <div class="icon bg-violet"><i class="icon-user"></i></div>
+                              <div class="title"><span>Sinh<br>viên</span></div>
+                              <div class="number"><strong th:text="${countStudent}"></strong></div>
+                           </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6">
+                           <div class="item d-flex align-items-center">
+                              <div class="icon bg-red"><i class="icon-user"></i></div>
+                              <div class="title"><span>Giảng <br>viên</span></div>
+                              <div class="number"><strong th:text="${countTeacher}"></strong></div>
+                           </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6">
+                           <div class="item d-flex align-items-center">
+                              <div class="icon bg-green"><i class="fa fa-book"></i></div>
+                              <div class="title"><span>Khóa<br>học</span></div>
+                              <div class="number"><strong th:text="${countCourse}"></strong></div>
+                           </div>
+                        </div>
+                        <!-- Item -->
+                        <div class="col-xl-3 col-sm-6">
+                           <div class="item d-flex align-items-center">
+                              <div class="icon bg-orange"><i class="fa fa-bookmark"></i></div>
+                              <div class="title"><span>Bộ tiêu<br>chí</span>
+                              </div>
+                              <div class="number"><strong th:text="${countCriteriaType}"></strong></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               <div class="card card-custom ">
+                  <h5 class="card-header h5">Thống kê năng lực sinh viên<a href="/api/csv/report-student.csv" class="btn btn-success float-right"><i class="fa fa-download"></i> Tải file</a></h5>
+                  <div class="card-body">
+                     <canvas id="student_capacity" width="400" height="100"></canvas>
+                  </div>
+               </div>
+               <div class="card card-custom ">
+                 <h5 class="card-header h5">Thống kê khóa học theo bộ môn<a href="/api/csv/report-course.csv" class="btn btn-success float-right"><i class="fa fa-download"></i> Tải file</a></h5>
+                 <div class="card-body">
+                    <canvas id="course_category" width="400" height="100"></canvas>
+                 </div>
+               </div>
+                <div class="card card-custom ">
+                 <h5 class="card-header h5">Đánh giá trung bình theo mỗi tiêu chí khi đánh giá khóa học <a href="/api/csv/report-result-evaluate.csv" class="btn btn-success float-right"><i class="fa fa-download"></i> Tải file</a></h5>
+                 <div class="card-body">
+                    <canvas id="evaluate" width="400" height="100"></canvas>
+                 </div>
+               </div>
+                <div class="card card-custom ">
+                 <h5 class="card-header h5">Nguyện vọng trung bình của sinh viên theo các bộ tiêu chí <a href="/api/csv/report-result-survey.csv" class="btn btn-success float-right"><i class="fa fa-download"></i> Tải file</a></h5>
+                 <div class="card-body">
+                    <canvas id="survey" width="400" height="100"></canvas>
+                 </div>
+               </div>
+               <div class="card col-lg-6 float-left ml-2">
+                 <h5 class="card-header h5">Xếp hạng khóa học theo bộ tiêu chí ICT NewHouse.</h5>
+                 <div class="card-body">
+                 	<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Tên khóa học</th>
+					      <th scope="col">Giảng viên</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="course,iterStat : ${ranks_ict}">
+					      <th scope="row" th:text="${iterStat.count}"></th>
+					      <td th:text="${course.name}"></td>
+					      <td th:text="${course.teacher.fullName}"></td>
+					    </tr>
+					  </tbody>
+					</table>
+                 </div>
+               </div>
+               <div class="card col-lg-6 float-right mr-2">
+                 <h5 class="card-header h5">Xếp hạng khóa học theo bộ tiêu chí đại học Bách Khoa Hà Nội.</h5>
+                 <div class="card-body">
+	                 <table class="table">
+						  <thead>
+						    <tr>
+						      <th scope="col">#</th>
+						      <th scope="col">Tên khóa học</th>
+						      <th scope="col">Giảng viên</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr th:each="course,iterStat : ${ranks_hust}">
+						      <th scope="row" th:text="${iterStat.count}"></th>
+						      <td th:text="${course.name}"></td>
+						      <td th:text="${course.teacher.fullName}"></td>
+						    </tr>
+						  </tbody>
+						</table>
+                 </div>
+               </div>
+               <!-- Page Footer-->
+               <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+            </div>
+         </div>
+      </div>
+      <script th:src="@{/admin/ajax/statistic.js}"></script>
+      
+   </body>
+</html>

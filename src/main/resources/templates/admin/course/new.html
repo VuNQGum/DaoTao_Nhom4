@@ -1,0 +1,177 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="~{admin/layouts/head :: head}">
+</head>
+<style>
+    .select2-container--default .select2-selection--single {
+        height: 30px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 30px;
+    }
+    
+    .select2-container--default .select2-selection--multiple {
+        min-height: 30px;
+    }
+    
+    .select2-container--default .select2-search--inline .select2-search__field {
+        line-height: 25px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 40px;
+    }
+    
+    .select2-container--default .select2-selection--multiple {
+    	border-radius: 0px
+    }
+    .selection {
+        width: 100%;
+    }
+    .form-control {
+    	border-color: #bcbcbc
+    }
+</style>
+
+<body>
+    <div class="page">
+        <!-- Main Navbar-->
+		<header th:replace="~{admin/layouts/header :: header}"> </header>            
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Quản lý khóa học</h2>
+                    </div>
+                </header>
+                <!-- Breadcrumb-->
+                <div class="breadcrumb-holder container-fluid">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item" th:if="${isAdmin}"><a th:href="@{/administrator/}">Trang
+								chủ</a></li>
+                        <li class="breadcrumb-item"><a th:href="@{'/'+${roleName}+'/courses/'}">Quản lý khóa học</a></li>
+                        <li class="breadcrumb-item active">Thêm mới</li>
+                    </ul>
+                </div>
+                <section class="tables">
+                    <div class="container-fluid">
+                    	<div th:replace="~{admin/layouts/loading :: loading}"> </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                               <input type="hidden" id="role_id" th:value="${roleId}">
+
+                                <div class="card">
+                                    <div class="card-header d-flex align-items-center">
+                                        <h3 class="h4" style="width:80%">Thêm mới khóa học</h3>
+                                        <div class="back">
+                                            <a th:href="@{'/'+${roleName}+'/courses/'}"><i class="fa fa-arrow-left"></i> Quay lại</a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="form-create-new"  class="col-12 scroll-form">
+                                            <div class="col-lg-12">
+                                                <th:block th:unless="${#lists.isEmpty(teachers)}">
+                                                    <div class="form-group col-lg-8 offset-lg-2" sec:authorize='hasAuthority("ADMIN")'>
+                                                        <label>Giảng viên<span class="text-danger ml-1">*</span></label>
+                                                        <select class="form-control" id="user" name="user_id">
+                                                            <option value="">Chọn giảng viên</option>
+                                                            <option th:each="teacher : ${teachers}" th:value="${teacher.id}" th:text="${teacher.fullName}"></option>
+                                                        </select>
+                                                    </div>
+                                                </th:block>
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label>Tên khóa học<span class="text-danger ml-1">*</span></label>
+                                                    <input type="text" class="form-control" id="course-name" name="name" placeholder="Nhập tên khóa học">
+                                                </div>
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label>Mã khóa học<span class="text-danger ml-1">*</span></label>
+                                                    <input type="text" class="form-control" id="course-code" name="code" placeholder="Nhập mã khóa học">
+                                                </div>
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label>Bộ môn<span class="text-danger ml-1">*</span></label>
+                                                    <th:block th:unless="${#lists.isEmpty(categories)}">
+                                                        <div class="form-group">
+                                                            <select class="form-control" id="category" name="category">
+                                                                <option value="">Chọn bộ môn</option>
+                                                                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                                                            </select>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label class="mr-3">Trạng thái</label>
+                                                    <br>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="status-show" value="1" checked>
+                                                        <label class="form-check-label">Hiện thị</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="status" id="status-not-show" value="0">
+                                                        <label class="form-check-label">Không hiện thị</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-8 offset-lg-2" style="margin-bottom: 0px">
+                                                    <label for="upload-image" class="btn btn-info btn-upload float-left">Chọn ảnh</label>
+                                                    <input type="file" name="photo" id="upload-image" />
+                                                    <div class="upload-btn-wrapper">
+                                                        <img th:src="@{/images/upload-pic.png}" class="" id="image-preview">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label>Liên kết ngoài</label>
+                                                    <input type="text" class="form-control" id="link" name="link" placeholder="Nhập đường dẫn liên kết ngoài">
+                                                </div>
+                                                <div class="clearfix"></div>
+												
+                                                <div class="form-group col-lg-8 offset-lg-2">
+                                                    <label>Mô tả<span class="text-danger ml-1">*</span></label>
+                                                    <textarea id="description" name="description"></textarea>
+                                                </div>
+                                            </div>
+                                            <div id="profile " class="">
+                                                <th:block th:unless="${#lists.isEmpty(profileDtos)}">
+                                                    <div class="form-group col-lg-8 offset-lg-2" th:each="profile : ${profileDtos}" >
+                                                        <label><span th:text="${profile.nameDisplayTeacherSide}"></span><span class="text-danger ml-1">*</span></label>
+
+                                                        <select multiple th:if="${profile.isMultiple}" class="form-control select" th:id="${profile.code}"  th:name="${profile.code}">
+                                                            <option th:each="value : ${profile.profileValueDtos}" th:value="${value.value}" th:text="${value.name}"></option>
+                                                        </select>
+                                                        <select th:if="${!profile.isMultiple}" class="form-control" th:id="${profile.code}" th:name="${profile.code}">
+                                                            <option value="">Lựa chọn giá trị</option>
+                                                            <option th:each="value : ${profile.profileValueDtos}" th:value="${value.value}" th:text="${value.name}"></option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </th:block>
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <div class="col-lg-12 text-center">
+                                                <button class="btn btn-danger btn-custom" id="btn-reset-modal-add">Hủy</button>
+                                                <button class="btn btn-success btn-custom" id="btn-add">Thêm mới</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <!-- Page Footer-->
+                <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+                <script>
+                    CKEDITOR.replace('description');
+                </script>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/admin/ajax/course.js}"></script>
+</body>
+
+</html>

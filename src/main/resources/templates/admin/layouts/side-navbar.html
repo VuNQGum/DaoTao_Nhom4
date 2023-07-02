@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">	
+<nav class="side-navbar" th:fragment="side-navbar">
+	<!-- Sidebar Header-->
+	<div class="sidebar-header d-flex align-items-center">
+		<div class="avatar">
+			<img src="" id="avatar" alt="..."
+				class="img-fluid rounded-circle" style="width:50px; height: 50px">
+		</div>
+		<div class="title text-center">
+			<h5 class="" id="name_loginer"></h5>
+			<p id="role_loginer" ></p>
+		</div>
+	</div>
+	<!-- Sidebar Navidation Menus-->
+	<span class="heading"><i class="fa fa-tasks mr-2"></i>Quản lý</span>
+	<ul class="list-unstyled">
+		<li sec:authorize='hasAuthority("ADMIN")' class="" th:classappend="${isHome} ? active : ''"><a
+			th:href="@{/administrator/}"> <i class="icon-home text-dark"></i>Trang
+				chủ
+		</a></li>
+		<li><a href="#change-info-user"   data-toggle="collapse"> <i class="fa fa-user"></i>Cập nhật thông tin</a>
+              <ul id="change-info-user" class="collapse list-unstyled "> 
+                <li><a th:href="@{/users}"><i class="far fa-circle"></i>Thay đổi thông tin</a></li>
+                <li ><a th:href="@{/change-password}"><i class="far fa-circle"></i>Thay đổi mật khẩu</a></li>
+              </ul>
+        </li>
+		<li sec:authorize='hasAuthority("ADMIN")'  th:classappend="${isUsers} ? active : ''"><a href="#exampledropdownDropdown" th:attr="aria-expanded= ${isUsers} ? true: false"  data-toggle="collapse"> <i class="fa fa-users"></i>Quản lý người dùng</a>
+              <ul id="exampledropdownDropdown" class="collapse list-unstyled " th:classappend="${isUsers} ? show : ''"> 
+                <li><a th:href="@{/administrator/users/2}"><i class="far fa-circle"></i>Quản lý giảng viên</a></li>
+                <li ><a th:href="@{/administrator/users/3}"><i class="far fa-circle"></i>Quản lý sinh viên</a></li>
+              </ul>
+        </li>
+		<li sec:authorize='hasAuthority("ADMIN")' th:classappend="${isCategories} ? active : ''"><a
+			th:href="@{/administrator/categories}"> <i class="icon-grid text-dark"></i>Quản
+				lý chủ đề
+		</a></li>
+
+		<li sec:authorize='hasAuthority("ADMIN")' th:classappend="${isCourses} ? active : ''"><a
+			th:href="@{/administrator/courses}"> <i
+				class="icon-interface-windows text-dark"></i>Quản lý khóa học
+		</a></li>
+		<li sec:authorize='hasAuthority("TEACHER")' th:classappend="${isCourses} ? active : ''"><a
+			th:href="@{/teacher/courses}"> <i
+				class="icon-interface-windows text-dark"></i>Quản lý khóa học
+		</a></li>
+		<li><a th:href="@{/}"> <i class="fa fa-arrow-circle-left"></i>Trở
+				lại trang web
+		</a></li>
+	</ul>
+	<div sec:authorize='hasAuthority("ADMIN")'>
+		<span class="heading"><i class="fa fa-cogs mr-2"></i>Cài đặt hệ
+		thống</span>
+		<ul class="list-unstyled">
+			<li th:classappend="${isProfiles} ? active : ''"><a th:href="@{/administrator/profiles}"> <i class="fa fa-user-circle"></i>Quản lý thuộc tính profile</a></li>
+			<li th:classappend="${isCriteria} ? active : ''"><a th:href="@{/administrator/criterias}"> <i class="fa fa-bookmark"></i>Quản lý tiêu chí đánh giá</a></li>
+			<li th:classappend="${isKansei} ? active : ''"><a th:href="@{/administrator/kansei-word}"> <i class="fa fa-file-word"></i>Quản lý từ Kansei</a></li>
+			<li th:classappend="${isTest} ? active : ''"><a th:href="@{/administrator/test}"> <i class="fa fa-question"></i>Quản lý câu hỏi kiểm tra</a></li>
+			<li th:classappend="${isStatistic} ? active : ''"><a th:href="@{/administrator/statistic}" > <i class="fa fa-chart-line"></i>Thống kê</a></li>
+        	<li th:classappend="${isSettings} ? active : ''"><a th:href="@{/administrator/settings}"> <i class="fa fa-cog"></i>Cài đặt</a></li>
+			<!-- <li><a href="#"> <i class="icon-screen"></i>Demo
+			</a></li>
+			<li><a href="#"> <i class="icon-mail"></i>Demo
+			</a></li>
+			<li><a href="#"> <i class="icon-picture"></i>Demo
+			</a></li> -->
+		</ul>
+	</div>
+</nav>
+</html>

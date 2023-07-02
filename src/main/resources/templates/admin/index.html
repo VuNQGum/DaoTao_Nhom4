@@ -1,0 +1,29 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/layouts/head :: head}">
+</head>
+
+<body>
+    <div class="page">
+        <!-- Main Navbar-->
+		<header th:replace="~{admin/layouts/header :: header}"> </header>            
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav th:replace="~{admin/layouts/side-navbar :: side-navbar}"></nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">Trang quản lý</h2>
+                    </div>
+                </header>
+                <!-- Page Footer-->
+                <footer th:replace="~{admin/layouts/footer :: footer}"> </footer>
+            </div>
+        </div>
+    </div>
+  	 
+</body>
+
+</html>

@@ -109,3 +109,4 @@ jobs:
           ls
           docker-compose up
           docker container ls
+          exit

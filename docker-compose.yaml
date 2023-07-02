@@ -10,11 +10,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: vu05042001
       POSTGRES_DB: e_learning
-    restart: always
 
   webapp:
     container_name: webcontainer
-    image: ilearning
+    # image: ilearning
+    image: __DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
     ports:
       - "8080:8080"
     depends_on:
@@ -24,6 +24,7 @@ services:
       POSTGRES_PORT: 5432
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: vu05042001
-    
-    restart: always
+      AMAZON_S3_BUCKET: __AMAZON_S3_BUCKET__
+      AMAZON_S3_ACCESSKEY: __AMAZON_S3_ACCESSKEY__
+      AMAZON_S3_PRIVATEKEY: __AMAZON_S3_PRIVATEKEY__
     

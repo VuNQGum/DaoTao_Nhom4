@@ -1,0 +1,4 @@
+amazonProperties:
+  accessKey: __AMAZON_S3_ACCESSKEY__
+  secretKey: __AMAZON_S3_PRIVATEKEY__
+  bucketName: __AMAZON_S3_BUCKET__

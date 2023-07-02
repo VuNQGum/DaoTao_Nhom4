@@ -32,9 +32,6 @@ public class AmazonUploadService {
 
 	private AmazonS3 s3client;
 
-	@Value("${amazonProperties.endpointUrl}")
-	private String endpointUrl;
-
 	@Value("${amazonProperties.bucketName}")
 	private String bucketName;
 

@@ -38,7 +38,7 @@ jobs:
     - name: Replace variables in Dockerfile
       uses: cschleiden/replace-tokens@v1
       with:
-        files: '["Dockerfile"]'
+        files: '["src/main/resources/application.yml"]'
         tokenPrefix: __ # optional, default is #{
         tokenSuffix: __ # optional, default is }#
       env:
